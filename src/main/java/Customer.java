@@ -55,4 +55,17 @@ public class Customer {
     public void setModifiedDate(Date modifiedDate) {
         this.modifiedDate = modifiedDate;
     }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "surname='" + surname + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", address=" + address +
+                ", dateOfBirth=" + dateOfBirth +
+                ", active=" + active +
+                ", createDate=" + createDate +
+                ", modifiedDate=" + modifiedDate +
+                '}';
+    }
 }

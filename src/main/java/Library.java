@@ -15,4 +15,17 @@ public class Library {
     public int findNumberOfMembers() {
         return memberShip.getNumberOfCustomers();
     }
+
+    public Membership getMemberShip() {
+        return memberShip;
+    }
+
+    @Override
+    public String toString() {
+        return "Library{" +
+                "name='" + name + '\'' +
+                ", address=" + address +
+                ", memberShip=" + memberShip +
+                '}';
+    }
 }

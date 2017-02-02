@@ -1,14 +1,19 @@
 import java.util.HashMap;
-import java.util.Map;
 
 public class Membership {
-    HashMap<Integer,Customer> customers = new HashMap<Integer, Customer>();
+    HashMap<Integer, Customer> customers = new HashMap<Integer, Customer>();
 
     public void addCustomer(Customer customer) {
-        customers.put((getNumberOfCustomers()+1),customer);
+        customers.put((getNumberOfCustomers() + 1), customer);
     }
 
-    public int getNumberOfCustomers(){
+    public int getNumberOfCustomers() {
         return customers.size();
+    }
+
+    public void listCustomerIdAndNames() {
+        for (Customer customer : customers.values()) {
+            System.out.println(customer.getSurname() + "," + customer.getFirstName());
+        }
     }
 }

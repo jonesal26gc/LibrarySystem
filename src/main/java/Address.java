@@ -16,4 +16,45 @@ public class Address {
         this.postcode = postcode;
         this.country = country;
     }
+
+    public String getHouseName() {
+        return houseName;
+    }
+
+    public String getStreetNameFirst() {
+        return streetNameFirst;
+    }
+
+    public String getStreetNameSecond() {
+        return streetNameSecond;
+    }
+
+    public String getTown() {
+        return town;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getPostcode() {
+        return postcode;
+    }
+
+    public Country getCountry() {
+        return country;
+    }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "houseName='" + houseName + '\'' +
+                ", streetNameFirst='" + streetNameFirst + '\'' +
+                ", streetNameSecond='" + streetNameSecond + '\'' +
+                ", town='" + town + '\'' +
+                ", city='" + city + '\'' +
+                ", postcode='" + postcode + '\'' +
+                ", country=" + country +
+                '}';
+    }
 }

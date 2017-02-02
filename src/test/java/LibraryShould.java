@@ -20,6 +20,8 @@ public class LibraryShould {
 
         // then
         assertThat(library.findNumberOfMembers(),is(1));
+        library.getMemberShip().addCustomer(customer);
+        library.getMemberShip().listCustomerIdAndNames();
 
     }
 }
