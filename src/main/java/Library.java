@@ -3,11 +3,12 @@ public class Library {
     private Address address;
     private Membership membership = new Membership();
     private BookCatalogue bookCatalogue = new BookCatalogue();
-    private BorrowedBookRegister borrowedBookRegister = new BorrowedBookRepository();
+    private BorrowedBookRepository borrowedBookRepository;
 
-    public Library(String name, Address address) {
+    public Library(String name, Address address, BorrowedBookRepository borrowedBookRepository) {
         this.name = name;
         this.address = address;
+        this.borrowedBookRepository = borrowedBookRepository;
     }
 
     public void insertBookIntoCatalogue(Book book) {
@@ -35,15 +36,15 @@ public class Library {
     }
 
     public BorrowedBook borrowBook(Book book, Member member) {
-        return borrowedBookRegister.insertBorrowedBook(new BorrowedBook(book, member));
+        return borrowedBookRepository.insertBorrowedBook(new BorrowedBook(book, member));
     }
 
     public BorrowedBook returnBook(int number) {
-        return borrowedBookRegister.returnBook(number);
+        return borrowedBookRepository.returnBook(number);
     }
 
     public void listBorrowedBooks() {
-        borrowedBookRegister.listBorrowedBooks();
+        borrowedBookRepository.listBorrowedBooks();
     }
 
     @Override
@@ -55,6 +56,6 @@ public class Library {
     }
 
     public int obtainBorrowedBookCount() {
-        return borrowedBookRegister.countBooks();
+        return borrowedBookRepository.countBooks();
     }
 }

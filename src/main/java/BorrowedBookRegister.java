@@ -1,24 +1,40 @@
-public interface BorrowedBookRegister {
+import java.util.Date;
+import java.util.HashMap;
 
+public class BorrowedBookRegister implements BorrowedBookRepository {
 
-    /**************
-     *
-     * @param borrowedBook
-     * @return
-     *
-     * You require a function to insert an record of a book being issues to
-     * a library member.
-     *
-     */
-    public BorrowedBook insertBorrowedBook(BorrowedBook borrowedBook);
+    private HashMap<Integer, BorrowedBook> borrowedBooks = new HashMap<Integer, BorrowedBook>();
+    private int lastNumber = 1;
 
-    /*********************
-     * You require a function to list all the books that have been lent out.
-     *
-     */
-    public void listBorrowedBooks();
+    public BorrowedBook insertBorrowedBook(BorrowedBook borrowedBook) {
+        borrowedBook.setNumber(lastNumber++);
+        borrowedBooks.put(borrowedBook.getNumber(), borrowedBook);
+        return borrowedBook;
+    }
 
+    public void listBorrowedBooks() {
+        for (BorrowedBook borrowedBook : borrowedBooks.values()) {
+            if (borrowedBook.isActive()) {
+                System.out.println(borrowedBook.toString());
+            }
+        }
+    }
 
-    public BorrowedBook returnBook(int number);
-    public int countBooks();
+    public BorrowedBook returnBook(int number) {
+        BorrowedBook borrowedBook = borrowedBooks.get(number);
+        borrowedBook.setInDate(new Date());
+        borrowedBook.setActive(false);
+        borrowedBooks.put(number, borrowedBook);
+        return borrowedBook;
+    }
+
+    public int countBooks() {
+        int count = 0;
+        for (BorrowedBook borrowedBook : borrowedBooks.values()) {
+            if (borrowedBook.isActive()) {
+                count++;
+            }
+        }
+        return count;
+    }
 }
