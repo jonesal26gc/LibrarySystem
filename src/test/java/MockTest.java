@@ -3,11 +3,7 @@ import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
-
 import java.util.Date;
-
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -23,7 +19,7 @@ public class MockTest {
 
     @Test
     public void
-    test1() {
+    return_book() {
         Address libraryAddress = new Address("Library House", "Upper Tilehouse Street", "", "Hitchin", "Hertfordshire", "UNKNOWN", Country.UNITED_KINGDOM);
 
         // for Mock to work, the interface to be overridden must be injected !!
@@ -33,6 +29,7 @@ public class MockTest {
 
         Member member = new Member("Jones", "Tony", homeAddress, new Date(), Gender.MALE);
         Book book1 = new Book("London Buses", "Fred Bloggs", "v1.1", new Date(), 1.99, BookCategory.NON_FICTION, BookSubject.TRANSPORT);
+
         // given
         int number =1;
         BorrowedBook b = new BorrowedBook(book1, member);
@@ -52,5 +49,4 @@ public class MockTest {
         verify(borrowedBookRepository, times(1)).countBooks();
         verify(borrowedBookRepository, times(1)).listBorrowedBooks();
     }
-
 }
