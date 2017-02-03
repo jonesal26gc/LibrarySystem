@@ -1,7 +1,8 @@
 public class Library {
     private String name;
     private Address address;
-    private Membership memberShip = new Membership();
+    private Membership membership = new Membership();
+    private BookCatalogue bookCatalogue = new BookCatalogue();
 
     public Library(String name, Address address) {
         this.name = name;
@@ -9,15 +10,11 @@ public class Library {
     }
 
     public void enroll(Customer customer) {
-        memberShip.addCustomer(customer);
+        membership.addCustomer(customer);
     }
 
     public int findNumberOfMembers() {
-        return memberShip.getNumberOfCustomers();
-    }
-
-    public Membership getMemberShip() {
-        return memberShip;
+        return membership.getNumberOfCustomers();
     }
 
     @Override
@@ -25,7 +22,25 @@ public class Library {
         return "Library{" +
                 "name='" + name + '\'' +
                 ", address=" + address +
-                ", memberShip=" + memberShip +
                 '}';
+    }
+
+    public void listCustomers() {
+        membership.listCustomers();
+    }
+
+    public void addBookToCatalogue(Book book){
+        bookCatalogue.addBook(book);
+    }
+
+    public void borrowBook(Customer customer, Book busBook) {
+
+    }
+
+    public int findNumberOfBooks() {
+        return bookCatalogue.getNumberOfBooks();
+    }
+
+    public void listBooks() {
     }
 }
