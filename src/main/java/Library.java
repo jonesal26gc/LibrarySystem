@@ -10,11 +10,11 @@ public class Library {
         this.address = address;
     }
 
-    public void enroll(Customer customer) {
+    public void enrollNewCustomer(Customer customer) {
         membership.addCustomer(customer);
     }
 
-    public int findNumberOfMembers() {
+    public int obtainNumberOfMembers() {
         return membership.getNumberOfCustomers();
     }
 
@@ -30,16 +30,16 @@ public class Library {
         membership.listCustomers();
     }
 
-    public void addBookToCatalogue(Book book) {
-        bookCatalogue.addBook(book);
+    public void insertBookIntoCatalogue(Book book) {
+        bookCatalogue.insertBook(book);
     }
 
     public void borrowBook(Book book, Customer customer) {
-        borrowedBookRegister.addBorrowedBook(new BorrowedBook(book, customer));
+        borrowedBookRegister.insertBorrowedBook(new BorrowedBook(book, customer));
     }
 
-    public int findNumberOfBooks() {
-        return bookCatalogue.getNumberOfBooks();
+    public int obtainNumberOfBooks() {
+        return bookCatalogue.obtainNumberOfBooks();
     }
 
     public void listBooks() {

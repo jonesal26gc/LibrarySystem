@@ -1,6 +1,4 @@
 public enum Country {
     UNITED_KINGDOM,
-    FRANCE,
-    GERMANY,
-    POLAND;
+    NORTHERN_IRELAND;
 }

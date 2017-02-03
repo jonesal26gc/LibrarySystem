@@ -21,24 +21,20 @@ public class Customer {
         this.gender = gender;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public boolean isActive() {
+        return active;
     }
 
     public void setActive(boolean active) {
         this.active = active;
     }
 
-    public void setModifiedDate(Date modifiedDate) {
-        this.modifiedDate = modifiedDate;
-    }
-
-    public boolean isActive() {
-        return active;
-    }
-
     public int getNumber() {
         return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
     }
 
     public String getSurname() {
@@ -65,9 +61,23 @@ public class Customer {
         return modifiedDate;
     }
 
+    public void setModifiedDate(Date modifiedDate) {
+        this.modifiedDate = modifiedDate;
+    }
 
     public Gender getGender() {
         return gender;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = number;
+        result = 31 * result + (surname != null ? surname.hashCode() : 0);
+        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
+        result = 31 * result + (dateOfBirth != null ? dateOfBirth.hashCode() : 0);
+        result = 31 * result + (active ? 1 : 0);
+        result = 31 * result + (gender != null ? gender.hashCode() : 0);
+        return result;
     }
 
     @Override
@@ -84,18 +94,6 @@ public class Customer {
         if (dateOfBirth != null ? !dateOfBirth.equals(customer.dateOfBirth) : customer.dateOfBirth != null)
             return false;
         return gender == customer.gender;
-
-    }
-
-    @Override
-    public int hashCode() {
-        int result = number;
-        result = 31 * result + (surname != null ? surname.hashCode() : 0);
-        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
-        result = 31 * result + (dateOfBirth != null ? dateOfBirth.hashCode() : 0);
-        result = 31 * result + (active ? 1 : 0);
-        result = 31 * result + (gender != null ? gender.hashCode() : 0);
-        return result;
     }
 
     @Override

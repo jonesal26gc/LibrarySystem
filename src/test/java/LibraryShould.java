@@ -26,18 +26,18 @@ public class LibraryShould {
         // given
 
         // when
-        library.enroll(customer);
+        library.enrollNewCustomer(customer);
 
         // then
-        assertThat(library.findNumberOfMembers(), is(1));
+        assertThat(library.obtainNumberOfMembers(), is(1));
         library.listCustomers();
     }
 
     @Test
     public void
     add_book_to_library_catalogue() {
-        library.addBookToCatalogue(busBook);
-        assertThat(library.findNumberOfBooks(), is(1));
+        library.insertBookIntoCatalogue(busBook);
+        assertThat(library.obtainNumberOfBooks(), is(1));
         library.listBooks();
     }
 
@@ -45,14 +45,13 @@ public class LibraryShould {
     public void
     borrow_book_from_library() {
         // given
-        library.enroll(customer);
-        library.addBookToCatalogue(busBook);
+        library.enrollNewCustomer(customer);
+        library.insertBookIntoCatalogue(busBook);
 
         // when
         library.borrowBook(busBook, customer);
 
         // then
         library.listBorrowedBooks();
-
     }
 }

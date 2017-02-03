@@ -20,10 +20,6 @@ public class Book {
         this.bookSubject = bookSubject;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
-    }
-
     @Override
     public String toString() {
         return "Book{" +
@@ -42,7 +38,35 @@ public class Book {
         return number;
     }
 
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
     public String getTitle() {
         return title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public String getPublicationVersion() {
+        return publicationVersion;
+    }
+
+    public Date getPublicationDate() {
+        return publicationDate;
+    }
+
+    public double getCostPrice() {
+        return costPrice;
+    }
+
+    public BookCategory getBookCategory() {
+        return bookCategory;
+    }
+
+    public BookSubject getBookSubject() {
+        return bookSubject;
     }
 }
