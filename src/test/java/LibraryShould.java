@@ -13,7 +13,7 @@ public class LibraryShould {
     private Address homeAddress = new Address("Home", "26 Grange Close", "", "Hitchin", "Herfordshire", "SG4 9HD", Country.UNITED_KINGDOM);
     private Customer customer = new Customer("Jones", "Tony", homeAddress, Date.valueOf("1962-09-22"), Gender.MALE);
 
-    private Book busBook = new Book("London Buses","Fred Bloggs","v1.1", Date.valueOf("2000-01-01"),1.99,BookCategory.NON_FICTION,BookSubject.TRANSPORT);
+    private Book busBook = new Book("London Buses", "Fred Bloggs", "v1.1", Date.valueOf("2000-01-01"), 1.99, BookCategory.NON_FICTION, BookSubject.TRANSPORT);
 
     @Before
     public void stuff_before_tests() {
@@ -35,24 +35,24 @@ public class LibraryShould {
 
     @Test
     public void
-    add_book_to_library_catalogue(){
+    add_book_to_library_catalogue() {
         library.addBookToCatalogue(busBook);
         assertThat(library.findNumberOfBooks(), is(1));
         library.listBooks();
     }
 
-
     @Test
     public void
-    borrow_book_from_library(){
+    borrow_book_from_library() {
         // given
         library.enroll(customer);
         library.addBookToCatalogue(busBook);
 
         // when
-        library.borrowBook(customer,busBook);
+        library.borrowBook(busBook, customer);
 
         // then
+        library.listBorrowedBooks();
 
     }
 }

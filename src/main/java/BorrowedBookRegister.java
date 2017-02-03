@@ -1,0 +1,26 @@
+import java.util.HashMap;
+
+public class BorrowedBookRegister {
+    private HashMap<Integer, BorrowedBook> borrowedBooks = new HashMap<Integer, BorrowedBook>();
+
+    public BorrowedBook addBorrowedBook(BorrowedBook borrowedBook) {
+        borrowedBook.setNumber(findNextNumber());
+        borrowedBooks.put(borrowedBook.getNumber(), borrowedBook);
+        return borrowedBook;
+    }
+
+    private int findNextNumber() {
+        for (int number = 1; true; number++) {
+            if (!borrowedBooks.containsKey(number)) {
+                return number;
+            }
+        }
+    }
+
+    public void listBorrowedBooks(){
+        for (BorrowedBook borrowedBook : borrowedBooks.values()){
+            System.out.println(borrowedBook.toString());
+        }
+    }
+
+}

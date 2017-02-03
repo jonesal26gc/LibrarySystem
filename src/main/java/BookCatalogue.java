@@ -20,4 +20,10 @@ public class BookCatalogue {
     public int getNumberOfBooks() {
         return books.size();
     }
+
+    public void listBooks() {
+        for (Book book : books.values()) {
+            System.out.println(book.toString());
+        }
+    }
 }

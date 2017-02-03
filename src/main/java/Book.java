@@ -41,4 +41,8 @@ public class Book {
     public int getNumber() {
         return number;
     }
+
+    public String getTitle() {
+        return title;
+    }
 }

@@ -3,6 +3,7 @@ public class Library {
     private Address address;
     private Membership membership = new Membership();
     private BookCatalogue bookCatalogue = new BookCatalogue();
+    private BorrowedBookRegister borrowedBookRegister = new BorrowedBookRegister();
 
     public Library(String name, Address address) {
         this.name = name;
@@ -29,12 +30,12 @@ public class Library {
         membership.listCustomers();
     }
 
-    public void addBookToCatalogue(Book book){
+    public void addBookToCatalogue(Book book) {
         bookCatalogue.addBook(book);
     }
 
-    public void borrowBook(Customer customer, Book busBook) {
-
+    public void borrowBook(Book book, Customer customer) {
+        borrowedBookRegister.addBorrowedBook(new BorrowedBook(book, customer));
     }
 
     public int findNumberOfBooks() {
@@ -42,5 +43,10 @@ public class Library {
     }
 
     public void listBooks() {
+        bookCatalogue.listBooks();
+    }
+
+    public void listBorrowedBooks() {
+        borrowedBookRegister.listBorrowedBooks();
     }
 }
