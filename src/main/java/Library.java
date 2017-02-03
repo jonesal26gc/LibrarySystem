@@ -3,7 +3,7 @@ public class Library {
     private Address address;
     private Membership membership = new Membership();
     private BookCatalogue bookCatalogue = new BookCatalogue();
-    private BorrowedBookRegister borrowedBookRegister = new BorrowedBookRegister();
+    private BorrowedBookRegister borrowedBookRegister = new BorrowedBookRepository();
 
     public Library(String name, Address address) {
         this.name = name;

@@ -1,46 +1,24 @@
-import java.util.Date;
-import java.util.HashMap;
+public interface BorrowedBookRegister {
 
-public class BorrowedBookRegister {
-    private HashMap<Integer, BorrowedBook> borrowedBooks = new HashMap<Integer, BorrowedBook>();
 
-    public BorrowedBook insertBorrowedBook(BorrowedBook borrowedBook) {
-        borrowedBook.setNumber(findNextNumber());
-        borrowedBooks.put(borrowedBook.getNumber(), borrowedBook);
-        return borrowedBook;
-    }
+    /**************
+     *
+     * @param borrowedBook
+     * @return
+     *
+     * You require a function to insert an record of a book being issues to
+     * a library member.
+     *
+     */
+    public BorrowedBook insertBorrowedBook(BorrowedBook borrowedBook);
 
-    private int findNextNumber() {
-        for (int number = 1; true; number++) {
-            if (!borrowedBooks.containsKey(number)) {
-                return number;
-            }
-        }
-    }
+    /*********************
+     * You require a function to list all the books that have been lent out.
+     *
+     */
+    public void listBorrowedBooks();
 
-    public void listBorrowedBooks() {
-        for (BorrowedBook borrowedBook : borrowedBooks.values()) {
-            if (borrowedBook.isActive()) {
-                System.out.println(borrowedBook.toString());
-            }
-        }
-    }
 
-    public BorrowedBook returnBook(int number) {
-        BorrowedBook borrowedBook = borrowedBooks.get(number);
-        borrowedBook.setInDate(new Date());
-        borrowedBook.setActive(false);
-        borrowedBooks.put(number, borrowedBook);
-        return borrowedBook;
-    }
-
-    public int countBooks() {
-        int count = 0;
-        for (BorrowedBook borrowedBook : borrowedBooks.values()) {
-            if (borrowedBook.isActive()) {
-                count++;
-            }
-        }
-        return count;
-    }
+    public BorrowedBook returnBook(int number);
+    public int countBooks();
 }
