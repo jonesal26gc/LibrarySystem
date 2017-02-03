@@ -1,26 +1,13 @@
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
-import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnit;
-import org.mockito.junit.MockitoRule;
-
 import java.util.Date;
-
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.*;
 
 public class LibraryShould {
-    // identify that Mockito is working with JUnit.
-    @Rule
-    public MockitoRule mockitoRule = MockitoJUnit.rule();
-
-    @Mock
-    BorrowedBookRepository borrowedBookRepository;
 
     private Address libraryAddress = new Address("Library House", "Upper Tilehouse Street", "", "Hitchin", "Hertfordshire", "UNKNOWN", Country.UNITED_KINGDOM);
-    private Library library = new Library("Hitchin Library", libraryAddress, borrowedBookRepository);
+    private Library library = new Library("Hitchin Library", libraryAddress, new BorrowedBookRegister());
 
     private Address homeAddress = new Address("Home", "26 Grange Close", "", "Hitchin", "Hertfordshire", "SG4 9HD", Country.UNITED_KINGDOM);
 
