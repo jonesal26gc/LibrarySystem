@@ -10,12 +10,40 @@ public class Library {
         this.address = address;
     }
 
-    public void enrollNewCustomer(Customer customer) {
-        membership.addCustomer(customer);
+    public void insertBookIntoCatalogue(Book book) {
+        bookCatalogue.insertBook(book);
     }
 
-    public int obtainNumberOfMembers() {
-        return membership.getNumberOfCustomers();
+    public int obtainBookCount() {
+        return bookCatalogue.obtainNumberOfBooks();
+    }
+
+    public void listBooks() {
+        bookCatalogue.listBooks();
+    }
+
+    public void registerMember(Member member) {
+        membership.addMember(member);
+    }
+
+    public int obtainMemberCount() {
+        return membership.getNumberOfMembers();
+    }
+
+    public void listMembers() {
+        membership.listMembers();
+    }
+
+    public BorrowedBook borrowBook(Book book, Member member) {
+        return borrowedBookRegister.insertBorrowedBook(new BorrowedBook(book, member));
+    }
+
+    public BorrowedBook returnBook(int number) {
+        return borrowedBookRegister.returnBook(number);
+    }
+
+    public void listBorrowedBooks() {
+        borrowedBookRegister.listBorrowedBooks();
     }
 
     @Override
@@ -26,27 +54,7 @@ public class Library {
                 '}';
     }
 
-    public void listCustomers() {
-        membership.listCustomers();
-    }
-
-    public void insertBookIntoCatalogue(Book book) {
-        bookCatalogue.insertBook(book);
-    }
-
-    public void borrowBook(Book book, Customer customer) {
-        borrowedBookRegister.insertBorrowedBook(new BorrowedBook(book, customer));
-    }
-
-    public int obtainNumberOfBooks() {
-        return bookCatalogue.obtainNumberOfBooks();
-    }
-
-    public void listBooks() {
-        bookCatalogue.listBooks();
-    }
-
-    public void listBorrowedBooks() {
-        borrowedBookRegister.listBorrowedBooks();
+    public int obtainBorrowedBookCount() {
+        return borrowedBookRegister.countBooks();
     }
 }

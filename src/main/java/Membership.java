@@ -1,29 +1,29 @@
 import java.util.HashMap;
 
 public class Membership {
-    private HashMap<Integer, Customer> customers = new HashMap<Integer, Customer>();
+    private HashMap<Integer, Member> members = new HashMap<Integer, Member>();
 
-    public int getNumberOfCustomers() {
-        return customers.size();
+    public int getNumberOfMembers() {
+        return members.size();
     }
 
-    public Customer addCustomer(Customer customer) {
-        customer.setNumber(findNextCustomerNumber());
-        customers.put(customer.getNumber(), customer);
-        return customer;
+    public Member addMember(Member member) {
+        member.setNumber(findNextMemberNumber());
+        members.put(member.getNumber(), member);
+        return member;
     }
 
-    public int findNextCustomerNumber() {
+    public int findNextMemberNumber() {
         for (int number = 1; true; number++) {
-            if (!customers.containsKey(number)) {
+            if (!members.containsKey(number)) {
                 return number;
             }
         }
     }
 
-    public void listCustomers() {
-        for (Customer customer : customers.values()) {
-            System.out.println(customer.toString());
+    public void listMembers() {
+        for (Member member : members.values()) {
+            System.out.println(member.toString());
         }
     }
 }

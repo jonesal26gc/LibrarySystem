@@ -1,6 +1,6 @@
 import java.util.Date;
 
-public class Customer {
+public class Member {
     private int number = 0;
     private String surname;
     private String firstName;
@@ -11,7 +11,7 @@ public class Customer {
     private Date modifiedDate;
     private Gender gender;
 
-    public Customer(String surname, String firstName, Address address, Date dateOfBirth, Gender gender) {
+    public Member(String surname, String firstName, Address address, Date dateOfBirth, Gender gender) {
         this.surname = surname;
         this.firstName = firstName;
         this.address = address;
@@ -85,20 +85,20 @@ public class Customer {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Customer customer = (Customer) o;
+        Member member = (Member) o;
 
-        if (number != customer.number) return false;
-        if (active != customer.active) return false;
-        if (surname != null ? !surname.equals(customer.surname) : customer.surname != null) return false;
-        if (firstName != null ? !firstName.equals(customer.firstName) : customer.firstName != null) return false;
-        if (dateOfBirth != null ? !dateOfBirth.equals(customer.dateOfBirth) : customer.dateOfBirth != null)
+        if (number != member.number) return false;
+        if (active != member.active) return false;
+        if (surname != null ? !surname.equals(member.surname) : member.surname != null) return false;
+        if (firstName != null ? !firstName.equals(member.firstName) : member.firstName != null) return false;
+        if (dateOfBirth != null ? !dateOfBirth.equals(member.dateOfBirth) : member.dateOfBirth != null)
             return false;
-        return gender == customer.gender;
+        return gender == member.gender;
     }
 
     @Override
     public String toString() {
-        return "Customer{" +
+        return "Member{" +
                 "number=" + number +
                 ", surname='" + surname + '\'' +
                 ", firstName='" + firstName + '\'' +

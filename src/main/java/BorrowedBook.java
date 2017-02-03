@@ -3,14 +3,14 @@ import java.util.Date;
 public class BorrowedBook {
     private int number = 0;
     private Book book;
-    private Customer customer;
+    private Member member;
     private boolean active;
     private Date outDate;
     private Date inDate = null;
 
-    public BorrowedBook(Book book, Customer customer) {
+    public BorrowedBook(Book book, Member member) {
         this.book = book;
-        this.customer = customer;
+        this.member = member;
         this.active=true;
         this.outDate=new Date();
     }
@@ -20,7 +20,7 @@ public class BorrowedBook {
         return "BorrowedBook{" +
                 "number=" + number +
                 ", book=" + book +
-                ", customer=" + customer +
+                ", member=" + member +
                 ", active=" + active +
                 ", outDate=" + outDate +
                 ", inDate=" + inDate +
@@ -55,8 +55,8 @@ public class BorrowedBook {
         this.inDate = inDate;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public Member getMember() {
+        return member;
     }
 
     public Book getBook() {
