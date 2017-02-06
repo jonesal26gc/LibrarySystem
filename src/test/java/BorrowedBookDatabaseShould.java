@@ -12,10 +12,10 @@ public class BorrowedBookDatabaseShould {
         LibraryDatabaseConnection ldbc = new LibraryDatabaseConnection();
         ldbc.establishConnection();
 
-        BorrowedBookDatabase borrowedBookDatabase = new BorrowedBookDatabase(ldbc);
-        System.out.println("Borrowed Books=" + borrowedBookDatabase.countBooks());
+        BorrowedBookTable borrowedBookDatabaseTable = new BorrowedBookTable(ldbc);
+        System.out.println("Borrowed Books=" + borrowedBookDatabaseTable.countBooks());
 
-        borrowedBookDatabase.listBorrowedBooks();
+        borrowedBookDatabaseTable.listBorrowedBooks();
 
         ldbc.terminateConnection();
     }
@@ -28,18 +28,18 @@ public class BorrowedBookDatabaseShould {
         LibraryDatabaseConnection ldbc = new LibraryDatabaseConnection();
         ldbc.establishConnection();
 
-        BorrowedBookDatabase borrowedBookDatabase = new BorrowedBookDatabase(ldbc);
+        BorrowedBookTable borrowedBookDatabaseTable = new BorrowedBookTable(ldbc);
 
         Member member = new Member("Jones", "Tony", null, new Date(), Gender.MALE);
         Book book1 = new Book("London Buses", "Fred Bloggs", "v1.1", new Date(), 1.99, BookCategory.NON_FICTION, BookSubject.TRANSPORT);
 
         BorrowedBook bb = new BorrowedBook(book1,member);
-        borrowedBookDatabase.insertBorrowedBook(bb);
+        borrowedBookDatabaseTable.insertBorrowedBook(bb);
         System.out.println(bb.toString());
 
-        System.out.println("Borrowed Books=" + borrowedBookDatabase.countBooks());
+        System.out.println("Borrowed Books=" + borrowedBookDatabaseTable.countBooks());
 
-        borrowedBookDatabase.listBorrowedBooks();
+        borrowedBookDatabaseTable.listBorrowedBooks();
 
         ldbc.terminateConnection();
     }
@@ -52,19 +52,19 @@ public class BorrowedBookDatabaseShould {
         LibraryDatabaseConnection ldbc = new LibraryDatabaseConnection();
         ldbc.establishConnection();
 
-        BorrowedBookDatabase borrowedBookDatabase = new BorrowedBookDatabase(ldbc);
+        BorrowedBookTable borrowedBookDatabaseTable = new BorrowedBookTable(ldbc);
 
         Member member = new Member("Jones", "Tony", null, new Date(), Gender.MALE);
         Book book1 = new Book("London Buses", "Fred Bloggs", "v1.1", new Date(), 1.99, BookCategory.NON_FICTION, BookSubject.TRANSPORT);
 
         BorrowedBook bb = new BorrowedBook(book1,member);
         bb.setNumber(12);
-        borrowedBookDatabase.returnBorrowedBook(bb);
+        borrowedBookDatabaseTable.returnBorrowedBook(bb);
         System.out.println(bb.toString());
 
-        System.out.println("Borrowed Books=" + borrowedBookDatabase.countBooks());
+        System.out.println("Borrowed Books=" + borrowedBookDatabaseTable.countBooks());
 
-        borrowedBookDatabase.listBorrowedBooks();
+        borrowedBookDatabaseTable.listBorrowedBooks();
 
         ldbc.terminateConnection();
     }
