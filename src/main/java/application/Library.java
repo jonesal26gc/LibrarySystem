@@ -42,7 +42,7 @@ public class Library {
     }
 
     public BorrowedBook returnBook(BorrowedBook borrowedBook) {
-        return borrowedBook;
+        return borrowedBookRepository.returnBorrowedBook(borrowedBook);
     }
 
     public void listBorrowedBooks() {
