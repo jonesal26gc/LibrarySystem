@@ -60,4 +60,8 @@ public class BorrowedBook {
     public int getBookNumber() {
         return bookNumber;
     }
+
+    public int getMemberNumber() {
+        return memberNumber;
+    }
 }

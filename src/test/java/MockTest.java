@@ -39,14 +39,14 @@ public class MockTest {
         b.setActive(false);
 
         // when
-        when(borrowedBookRepository.returnBorrowedBook(number)).thenReturn(b);
+        when(borrowedBookRepository.returnBorrowedBook(b)).thenReturn(b);
         when(borrowedBookRepository.countBooks()).thenReturn(0);
-        library.returnBook(number);
+        library.returnBook(b);
         library.obtainBorrowedBookCount();
         library.listBorrowedBooks();
 
         // then
-        verify(borrowedBookRepository, times(1)).returnBorrowedBook(b.getNumber());
+        verify(borrowedBookRepository, times(1)).returnBorrowedBook(b);
         verify(borrowedBookRepository, times(1)).countBooks();
         verify(borrowedBookRepository, times(1)).listBorrowedBooks();
     }

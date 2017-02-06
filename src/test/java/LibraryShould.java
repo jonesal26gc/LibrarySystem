@@ -64,12 +64,12 @@ public class LibraryShould {
         // given
         library.registerMember(member);
         library.insertBookIntoCatalogue(book1);
-        int reference = library.borrowBook(book1, member).getNumber();
+        BorrowedBook b = library.borrowBook(book1, member);
         assertThat(library.obtainBorrowedBookCount(), is(1));
         //library.listBorrowedBooks();
 
         // when
-        library.returnBook(reference);
+        library.returnBook(b);
 
         // then
         assertThat(library.obtainBorrowedBookCount(), is(0));

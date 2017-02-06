@@ -22,11 +22,10 @@ public class BorrowedBookRegister implements BorrowedBookRepository {
         }
     }
 
-    public BorrowedBook returnBorrowedBook(int number) {
-        BorrowedBook borrowedBook = borrowedBooks.get(number);
-        borrowedBook.setInDate(new Date());
+    public BorrowedBook returnBorrowedBook(BorrowedBook borrowedBook) {
         borrowedBook.setActive(false);
-        borrowedBooks.put(number, borrowedBook);
+        borrowedBook.setInDate(new Date());
+        borrowedBooks.put(borrowedBook.getNumber(), borrowedBook);
         return borrowedBook;
     }
 

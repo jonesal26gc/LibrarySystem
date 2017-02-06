@@ -34,6 +34,24 @@ CREATE TABLE LIBRARY.BOOK
 --ALTER TABLE LIBRARY.BOOK ADD CONSTRAINT book_category_id_FK FOREIGN KEY (book_category_id) REFERENCES LIBRARY.book_catregory (book_category_id)
 --;
 
+CREATE TABLE LIBRARY.BORROWED_BOOK
+    (   borrowed_book_id        integer      NOT NULL,
+	    book_id                 integer      NOT NULL,
+	    member_id               integer      not null,
+	    active                  byteint      not null,
+	    out_date                date         not null,
+	    in_date                 date,
+
+        constraint borrowed_book_id_PK PRIMARY KEY (borrowed_book_id)
+)
+;
+
+CREATE TABLE LIBRARY.borrowed_book_id_SEQ
+   ( borrowed_book_id INTEGER NOT NULL )
+   ;
+
+
+
 --CREATE TABLE LIBRARY.book_id_SEQ
 --   ( book_id INTEGER NOT NULL )
 --   ;

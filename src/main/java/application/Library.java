@@ -41,8 +41,8 @@ public class Library {
         return borrowedBookRepository.insertBorrowedBook(new BorrowedBook(book, member));
     }
 
-    public BorrowedBook returnBook(int number) {
-        return borrowedBookRepository.returnBorrowedBook(number);
+    public BorrowedBook returnBook(BorrowedBook borrowedBook) {
+        return borrowedBook;
     }
 
     public void listBorrowedBooks() {
