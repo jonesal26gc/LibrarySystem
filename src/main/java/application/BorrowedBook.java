@@ -4,15 +4,15 @@ import java.util.Date;
 
 public class BorrowedBook {
     private int number = 0;
-    private Book book;
-    private Member member;
+    private int bookNumber;
+    private int memberNumber;
     private boolean active;
     private Date outDate;
     private Date inDate = null;
 
     public BorrowedBook(Book book, Member member) {
-        this.book = book;
-        this.member = member;
+        this.bookNumber = book.getNumber();
+        this.memberNumber = member.getNumber();
         this.active=true;
         this.outDate=new Date();
     }
@@ -21,8 +21,8 @@ public class BorrowedBook {
     public String toString() {
         return "application.BorrowedBook{" +
                 "number=" + number +
-                ", book=" + book +
-                ", member=" + member +
+                ", book=" + bookNumber +
+                ", member=" + memberNumber +
                 ", active=" + active +
                 ", outDate=" + outDate +
                 ", inDate=" + inDate +
@@ -57,12 +57,7 @@ public class BorrowedBook {
         this.inDate = inDate;
     }
 
-    public Member getMember() {
-        return member;
-    }
-
-    public Book getBook() {
-
-        return book;
+    public int getBookNumber() {
+        return bookNumber;
     }
 }
