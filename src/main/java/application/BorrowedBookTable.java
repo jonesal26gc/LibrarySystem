@@ -94,7 +94,7 @@ public class BorrowedBookTable implements BorrowedBookRepository {
                 "UPDATE " +
                         "LIBRARY.BORROWED_BOOK " +
                         "set active = ?" +
-                        "  , out_date = ? " +
+                        "  , in_date = ? " +
                         "where borrowed_book_id = ? ;");
         if (borrowedBook.isActive()) {
             preparedStatement.setByte(1, (byte) 1);
