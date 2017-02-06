@@ -1,0 +1,44 @@
+bteq <<EOI
+.LOGON 127.0.0.1/dbc,dbc;
+------------------------------------- start of job -------------------------------------
+
+------------------------------------------------------------------------------------------
+-- This SQL creates all the tables in the LIBRARY database, and the LIBRARY database itself.
+------------------------------------------------------------------------------------------
+
+modify database LIBRARY as drop default journal table;
+DELETE DATABASE LIBRARY;
+DROP DATABASE LIBRARY;
+CREATE DATABASE LIBRARY
+as
+   perm  = 10000000
+   spool = 20000000
+   fallback
+   account= 'dbc'
+
+;
+CREATE TABLE LIBRARY.BOOK
+    (   book_id                 integer      NOT NULL,
+	    book_title              VARCHAR(255) NOT NULL,
+	    author                  varchar(80)  not null,
+	    publication_version     varchar (10) not null,
+	    publication_date        date         not null,
+	    cost_price              decimal(7,2) not null,
+	    book_category_id        integer      not null,
+	    book_subject_id         integer      not null,
+
+        constraint book_id_PK PRIMARY KEY (book_id)
+)
+;
+
+--ALTER TABLE LIBRARY.BOOK ADD CONSTRAINT book_category_id_FK FOREIGN KEY (book_category_id) REFERENCES LIBRARY.book_catregory (book_category_id)
+--;
+
+--CREATE TABLE LIBRARY.book_id_SEQ
+--   ( book_id INTEGER NOT NULL )
+--   ;
+
+------------------------------------- end of job ---------------------------------------
+.LOGOFF;
+.QUIT;
+EOI
