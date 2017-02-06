@@ -8,7 +8,7 @@ public class AddressBuilderShould {
 
     @Test
     public void
-    build_an_address() {
+    build_some_addresses() {
 
         ArrayList<Address> addresses = new ArrayList<Address>();
 
