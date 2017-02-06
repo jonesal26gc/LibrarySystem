@@ -1,3 +1,5 @@
+package application;
+
 public enum BookSubject {
     TRANSPORT,
     HISTORY,

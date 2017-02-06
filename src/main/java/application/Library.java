@@ -1,3 +1,5 @@
+package application;
+
 public class Library {
     private String name;
     private Address address;
@@ -40,22 +42,22 @@ public class Library {
     }
 
     public BorrowedBook returnBook(int number) {
-        return borrowedBookRepository.returnBook(number);
+        return borrowedBookRepository.returnBorrowedBook(number);
     }
 
     public void listBorrowedBooks() {
         borrowedBookRepository.listBorrowedBooks();
     }
 
+    public int obtainBorrowedBookCount() {
+        return borrowedBookRepository.countBooks();
+    }
+
     @Override
     public String toString() {
-        return "Library{" +
+        return "application.Library{" +
                 "name='" + name + '\'' +
                 ", address=" + address +
                 '}';
-    }
-
-    public int obtainBorrowedBookCount() {
-        return borrowedBookRepository.countBooks();
     }
 }

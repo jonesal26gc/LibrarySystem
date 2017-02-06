@@ -1,3 +1,4 @@
+import application.*;
 import org.junit.Rule;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -20,10 +21,10 @@ public class MockTest {
     @Test
     public void
     return_book() {
-        Address libraryAddress = new Address("Library House", "Upper Tilehouse Street", "", "Hitchin", "Hertfordshire", "UNKNOWN", Country.UNITED_KINGDOM);
+        Address libraryAddress = new Address("application.Library House", "Upper Tilehouse Street", "", "Hitchin", "Hertfordshire", "UNKNOWN", Country.UNITED_KINGDOM);
 
         // for Mock to work, the interface to be overridden must be injected !!
-        Library library = new Library("Hitchin Library", libraryAddress, borrowedBookRepository);
+        Library library = new Library("Hitchin application.Library", libraryAddress, borrowedBookRepository);
 
         Address homeAddress = new Address("Home", "26 Grange Close", "", "Hitchin", "Herfordshire", "SG4 9HD", Country.UNITED_KINGDOM);
 
@@ -38,14 +39,14 @@ public class MockTest {
         b.setActive(false);
 
         // when
-        when(borrowedBookRepository.returnBook(number)).thenReturn(b);
+        when(borrowedBookRepository.returnBorrowedBook(number)).thenReturn(b);
         when(borrowedBookRepository.countBooks()).thenReturn(0);
         library.returnBook(number);
         library.obtainBorrowedBookCount();
         library.listBorrowedBooks();
 
         // then
-        verify(borrowedBookRepository, times(1)).returnBook(b.getNumber());
+        verify(borrowedBookRepository, times(1)).returnBorrowedBook(b.getNumber());
         verify(borrowedBookRepository, times(1)).countBooks();
         verify(borrowedBookRepository, times(1)).listBorrowedBooks();
     }

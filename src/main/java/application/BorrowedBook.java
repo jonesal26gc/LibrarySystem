@@ -1,3 +1,5 @@
+package application;
+
 import java.util.Date;
 
 public class BorrowedBook {
@@ -17,7 +19,7 @@ public class BorrowedBook {
 
     @Override
     public String toString() {
-        return "BorrowedBook{" +
+        return "application.BorrowedBook{" +
                 "number=" + number +
                 ", book=" + book +
                 ", member=" + member +

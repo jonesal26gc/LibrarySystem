@@ -1,3 +1,4 @@
+import application.*;
 import org.junit.Before;
 import org.junit.Test;
 import java.util.Date;
@@ -6,8 +7,8 @@ import static org.junit.Assert.assertThat;
 
 public class LibraryShould {
 
-    private Address libraryAddress = new Address("Library House", "Upper Tilehouse Street", "", "Hitchin", "Hertfordshire", "UNKNOWN", Country.UNITED_KINGDOM);
-    private Library library = new Library("Hitchin Library", libraryAddress, new BorrowedBookRegister());
+    private Address libraryAddress = new Address("application.Library House", "Upper Tilehouse Street", "", "Hitchin", "Hertfordshire", "UNKNOWN", Country.UNITED_KINGDOM);
+    private Library library = new Library("Hitchin application.Library", libraryAddress, new BorrowedBookRegister());
 
     private Address homeAddress = new Address("Home", "26 Grange Close", "", "Hitchin", "Hertfordshire", "SG4 9HD", Country.UNITED_KINGDOM);
 

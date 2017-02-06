@@ -1,3 +1,5 @@
+package application;
+
 public class Address {
     private String houseName;
     private String streetNameFirst;

@@ -1,3 +1,5 @@
+package application;
+
 public interface BorrowedBookRepository {
 
 
@@ -13,6 +15,6 @@ public interface BorrowedBookRepository {
     public BorrowedBook insertBorrowedBook(BorrowedBook borrowedBook);
 
     public void listBorrowedBooks();
-    public BorrowedBook returnBook(int number);
+    public BorrowedBook returnBorrowedBook(int number);
     public int countBooks();
 }

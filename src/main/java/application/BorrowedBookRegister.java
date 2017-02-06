@@ -1,3 +1,5 @@
+package application;
+
 import java.util.Date;
 import java.util.HashMap;
 
@@ -20,7 +22,7 @@ public class BorrowedBookRegister implements BorrowedBookRepository {
         }
     }
 
-    public BorrowedBook returnBook(int number) {
+    public BorrowedBook returnBorrowedBook(int number) {
         BorrowedBook borrowedBook = borrowedBooks.get(number);
         borrowedBook.setInDate(new Date());
         borrowedBook.setActive(false);

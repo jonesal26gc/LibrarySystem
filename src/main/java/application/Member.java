@@ -1,3 +1,5 @@
+package application;
+
 import java.util.Date;
 
 public class Member {
@@ -98,7 +100,7 @@ public class Member {
 
     @Override
     public String toString() {
-        return "Member{" +
+        return "application.Member{" +
                 "number=" + number +
                 ", surname='" + surname + '\'' +
                 ", firstName='" + firstName + '\'' +

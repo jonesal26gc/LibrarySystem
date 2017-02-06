@@ -1,3 +1,5 @@
+package application;
+
 import java.util.Date;
 
 public class Book {
@@ -22,7 +24,7 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book{" +
+        return "application.Book{" +
                 "number=" + number +
                 ", title='" + title + '\'' +
                 ", author='" + author + '\'' +
