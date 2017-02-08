@@ -13,7 +13,7 @@ public class LibraryDatabaseConnection {
     public void establishConnection() {
         try {
             connection = DriverManager
-                    .getConnection("jdbc:teradata://192.168.0.9/" +
+                    .getConnection("jdbc:teradata://172.23.46.81/" +
                             "TMODE=ANSI," +
                             "CHARSET=UTF8," +
                             "DATABASE=LIBRARY," +

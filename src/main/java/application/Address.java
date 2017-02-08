@@ -1,6 +1,7 @@
 package application;
 
 public class Address {
+    private int id;
     private String houseName;
     private String streetNameFirst;
     private String streetNameSecond;
@@ -9,7 +10,8 @@ public class Address {
     private String postcode;
     private Country country;
 
-    public Address(String houseName, String streetNameFirst, String streetNameSecond, String town, String city, String postcode, Country country) {
+    public Address(int id, String houseName, String streetNameFirst, String streetNameSecond, String town, String city, String postcode, Country country) {
+        this.id = id;
         this.houseName = houseName;
         this.streetNameFirst = streetNameFirst;
         this.streetNameSecond = streetNameSecond;
@@ -17,6 +19,14 @@ public class Address {
         this.city = city;
         this.postcode = postcode;
         this.country = country;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getHouseName() {
@@ -50,7 +60,8 @@ public class Address {
     @Override
     public String toString() {
         return "Address{" +
-                "houseName='" + houseName + '\'' +
+                "id=" + id +
+                ", houseName='" + houseName + '\'' +
                 ", streetNameFirst='" + streetNameFirst + '\'' +
                 ", streetNameSecond='" + streetNameSecond + '\'' +
                 ", town='" + town + '\'' +

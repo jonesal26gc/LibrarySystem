@@ -17,16 +17,47 @@ as
    account= 'dbc'
 
 ;
+
+CREATE TABLE LIBRARY.address
+    (   address_id              integer      NOT NULL,
+	    house_name              VARCHAR(40)  NOT NULL,
+	    street_name_first       VARCHAR(40)  NOT NULL,
+	    street_name_second      VARCHAR(40)  NOT NULL,
+        town                    VARCHAR(40)  NOT NULL,
+        city                    VARCHAR(40)  NOT NULL,
+        post_code               VARCHAR(10)  NOT NULL,
+        country                 CHAR(3)      NOT NULL,
+	    create_timestamp        timestamp    not null,
+	    modified_timestamp      timestamp    not null,
+	    constraint address_id_PK PRIMARY KEY (address_id)
+)
+;
+
+CREATE TABLE LIBRARY.member
+    (   member_id               integer      NOT NULL,
+	    surname                 VARCHAR(80)  NOT NULL,
+	    first_name              varchar(80)  not null,
+	    date_of_birth           date         not null,
+	    gender                  char(1)      not null,
+	    address_id              integer      not null,
+	    active_indicator        char(1)      not null,
+	    create_timestamp        timestamp    not null,
+	    modified_timestamp      timestamp    not null,
+        constraint member_id_PK PRIMARY KEY (member_id)
+)
+;
+
 CREATE TABLE LIBRARY.BOOK
     (   book_id                 integer      NOT NULL,
-	    book_title              VARCHAR(255) NOT NULL,
+	    book_title              VARCHAR(80)  NOT NULL,
 	    author                  varchar(80)  not null,
 	    publication_version     varchar (10) not null,
 	    publication_date        date         not null,
 	    cost_price              decimal(7,2) not null,
 	    book_category_id        integer      not null,
 	    book_subject_id         integer      not null,
-
+   	    create_timestamp        timestamp    not null,
+   	    modified_timestamp      timestamp    not null,
         constraint book_id_PK PRIMARY KEY (book_id)
 )
 ;
@@ -38,23 +69,28 @@ CREATE TABLE LIBRARY.BORROWED_BOOK
     (   borrowed_book_id        integer      NOT NULL,
 	    book_id                 integer      NOT NULL,
 	    member_id               integer      not null,
-	    active                  byteint      not null,
-	    out_date                date         not null,
-	    in_date                 date,
-
+	    active_indicator        char(1)      not null,
+	    out_date                timestamp    not null,
+	    in_date                 timestamp,
         constraint borrowed_book_id_PK PRIMARY KEY (borrowed_book_id)
 )
 ;
 
+CREATE TABLE LIBRARY.address_id_SEQ
+   ( address_id INTEGER NOT NULL )
+   ;
+
+CREATE TABLE LIBRARY.member_id_SEQ
+   ( member_id INTEGER NOT NULL )
+   ;
+
+CREATE TABLE LIBRARY.book_id_SEQ
+   ( book_id INTEGER NOT NULL )
+   ;
+
 CREATE TABLE LIBRARY.borrowed_book_id_SEQ
    ( borrowed_book_id INTEGER NOT NULL )
    ;
-
-
-
---CREATE TABLE LIBRARY.book_id_SEQ
---   ( book_id INTEGER NOT NULL )
---   ;
 
 ------------------------------------- end of job ---------------------------------------
 .LOGOFF;
