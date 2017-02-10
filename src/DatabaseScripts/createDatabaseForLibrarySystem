@@ -18,6 +18,17 @@ as
 
 ;
 
+
+drop table library.hibernate_sequences;
+commit;
+CREATE TABLE LIBRARY.hibernate_sequences
+    (   sequence_name           varchar(128) NOT NULL,
+	    next_val  integer      NOT NULL,
+	    constraint sequence_name_PK PRIMARY KEY (sequence_name)
+)
+;
+
+
 CREATE TABLE LIBRARY.address
     (   address_id              integer      NOT NULL,
 	    house_name              VARCHAR(40)  NOT NULL,

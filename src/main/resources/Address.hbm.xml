@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+/
+<hibernate-mapping>
+    <class name="Address" table="ADDRESS">
+        <meta attribute="class-description">
+            This class contains the Address details.
+        </meta>
+        <id name="id" type="int" column="address_id">
+            <generator class="table"/>
+        </id>
+        <property name="houseName" column="house_name" type="string"/>
+        <property name="streetNameFirst" column="street_name_first" type="string"/>
+        <property name="streetNameSecond" column="street_name_second" type="string"/>
+        <property name="town" column="town" type="string"/>
+        <property name="city" column="city" type="string"/>
+        <property name="postcode" column="postcode" type="string"/>
+        <property name="country" column="country" type="string"/>
+        <property name="createTimestamp" column="create_timestamp" type="timestamp"/>
+        <property name="modifiedTimestamp" column="modified_timestamp" type="timestamp"/>
+    </class>
+</hibernate-mapping>

@@ -7,7 +7,7 @@ import java.sql.Timestamp;
 @Table(name="ADDRESS")
 public class Address {
     @Id @GeneratedValue(strategy = GenerationType.TABLE)
-    @Column(name="ID")
+    @Column(name="ADDRESS_ID")
     private int id;
 
     @Column(name="HOUSE_NAME")
@@ -39,7 +39,6 @@ public class Address {
 
     public Address(String houseName, String streetNameFirst, String streetNameSecond, String town, String city,
                    String postcode, Country country) {
-        this.id = id;
         this.houseName = houseName;
         this.streetNameFirst = streetNameFirst;
         this.streetNameSecond = streetNameSecond;
@@ -47,8 +46,6 @@ public class Address {
         this.city = city;
         this.postcode = postcode;
         this.country = country;
-        this.createTimestamp = createTimestamp;
-        this.modifiedTimestamp = modifiedTimestamp;
     }
 
     public int getId() {

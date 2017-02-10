@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.dialect">
+            org.hibernate.dialect.TeradataDialect
+        </property>
+        <property name="hibernate.connection.driver_class">
+            com.teradata.jdbc.TeraDriver
+        </property>
+        <property name="hibernate.connection.url">
+            jdbc:teradata://192.168.0.15/TMODE=ANSI,CHARSET=UTF8,DATABASE=LIBRARY
+        </property>
+        <property name="hibernate.connection.username">
+            dbc
+        </property>
+        <property name="hibernate.connection.password">
+            dbc
+        </property>
+    </session-factory>
+</hibernate-configuration>
