@@ -6,7 +6,15 @@ import java.sql.Timestamp;
 @Entity
 @Table(name="ADDRESS")
 public class Address {
-    @Id @GeneratedValue(strategy = GenerationType.TABLE)
+    @TableGenerator(
+            name="addressGen",
+            initialValue = 0,
+            allocationSize = 1,
+            table="hibernate_sequences",
+            pkColumnName="sequence_name",
+            valueColumnName="next_val",
+            pkColumnValue="ADDR_ID")
+    @Id @GeneratedValue(strategy = GenerationType.TABLE,generator = "addressGen")
     @Column(name="ADDRESS_ID")
     private int id;
 
