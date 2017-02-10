@@ -103,7 +103,7 @@ public final class AddressBuilder {
     }
 
     public Address build() {
-        Address address = new Address(id, houseName, streetNameFirst, streetNameSecond, town, city, postcode, country);
+        Address address = new Address(houseName, streetNameFirst, streetNameSecond, town, city, postcode, country);
         return address;
     }
 }

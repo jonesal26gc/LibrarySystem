@@ -25,7 +25,7 @@ CREATE TABLE LIBRARY.address
 	    street_name_second      VARCHAR(40)  NOT NULL,
         town                    VARCHAR(40)  NOT NULL,
         city                    VARCHAR(40)  NOT NULL,
-        post_code               VARCHAR(10)  NOT NULL,
+        postcode                VARCHAR(10)  NOT NULL,
         country                 CHAR(3)      NOT NULL,
 	    create_timestamp        timestamp    not null,
 	    modified_timestamp      timestamp    not null,

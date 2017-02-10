@@ -1,16 +1,44 @@
 package application;
 
+import javax.persistence.*;
+import java.sql.Timestamp;
+
+@Entity
+@Table(name="ADDRESS")
 public class Address {
+    @Id @GeneratedValue(strategy = GenerationType.TABLE)
+    @Column(name="ID")
     private int id;
+
+    @Column(name="HOUSE_NAME")
     private String houseName;
+
+    @Column(name="STREET_NAME_FIRST")
     private String streetNameFirst;
+
+    @Column(name="STREET_NAME_SECOND")
     private String streetNameSecond;
+
+    @Column(name="TOWN")
     private String town;
+
+    @Column(name="CITY")
     private String city;
+
+    @Column(name="POSTCODE")
     private String postcode;
+
+    @Column(name="COUNTRY")
     private Country country;
 
-    public Address(int id, String houseName, String streetNameFirst, String streetNameSecond, String town, String city, String postcode, Country country) {
+    @Column(name="CREATE_TIMESTAMP")
+    private Timestamp createTimestamp;
+
+    @Column(name="MODIFIED_TIMESTAMP")
+    private Timestamp modifiedTimestamp;
+
+    public Address(String houseName, String streetNameFirst, String streetNameSecond, String town, String city,
+                   String postcode, Country country) {
         this.id = id;
         this.houseName = houseName;
         this.streetNameFirst = streetNameFirst;
@@ -19,6 +47,8 @@ public class Address {
         this.city = city;
         this.postcode = postcode;
         this.country = country;
+        this.createTimestamp = createTimestamp;
+        this.modifiedTimestamp = modifiedTimestamp;
     }
 
     public int getId() {
@@ -57,6 +87,22 @@ public class Address {
         return country;
     }
 
+    public Timestamp getCreateTimestamp() {
+        return createTimestamp;
+    }
+
+    public void setCreateTimestamp(Timestamp createTimestamp) {
+        this.createTimestamp = createTimestamp;
+    }
+
+    public Timestamp getModifiedTimestamp() {
+        return modifiedTimestamp;
+    }
+
+    public void setModifiedTimestamp(Timestamp modifiedTimestamp) {
+        this.modifiedTimestamp = modifiedTimestamp;
+    }
+
     @Override
     public String toString() {
         return "Address{" +
@@ -68,6 +114,8 @@ public class Address {
                 ", city='" + city + '\'' +
                 ", postcode='" + postcode + '\'' +
                 ", country=" + country +
+                ", createTimestamp=" + createTimestamp +
+                ", modifiedTimestamp=" + modifiedTimestamp +
                 '}';
     }
 }

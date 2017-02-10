@@ -29,6 +29,8 @@ public class AddressBuilderForDatabaseShould {
 
                 incrementAddressId(ldbc);
                 newAddress.setId(retrieveAddressId(ldbc));
+                newAddress.setCreateTimestamp(getCurrentTimeStamp());
+                newAddress.setModifiedTimestamp(getCurrentTimeStamp());
                 System.out.println(newAddress.toString());
                 insertAddress(ldbc,newAddress);
             }
@@ -56,8 +58,8 @@ public class AddressBuilderForDatabaseShould {
         insertStatement.setString(6,address.getCity());
         insertStatement.setString(7,address.getPostcode());
         insertStatement.setString(8,address.getCountry().getCountryCode());
-        insertStatement.setTimestamp(9,getCurrentTimeStamp());
-        insertStatement.setTimestamp(10,getCurrentTimeStamp());
+        insertStatement.setTimestamp(9,address.getCreateTimestamp());
+        insertStatement.setTimestamp(10,address.getModifiedTimestamp());
         insertStatement.execute();
         insertStatement.close();
     }
