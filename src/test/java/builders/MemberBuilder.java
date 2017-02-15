@@ -21,87 +21,106 @@ public final class MemberBuilder {
     }
 
     public MemberBuilder withSurname(String surname) {
-
         if (surname.equals("")) {
-            switch (((int) Math.round(Math.random() * 9)) + 1) {
-                case 1:
-                    this.surname = "Jones";
-                    return this;
-                case 2:
-                    this.surname = "Phillips";
-                    return this;
-                case 3:
-                    this.surname = "Clarke";
-                    return this;
-                case 4:
-                    this.surname = "Hill";
-                    return this;
-                case 5:
-                    this.surname = "Smith";
-                    return this;
-                case 6:
-                    this.surname = "Read";
-                    return this;
-                case 7:
-                    this.surname = "Menzies";
-                    return this;
-                case 8:
-                    this.surname = "Walker";
-                    return this;
-                case 9:
-                    this.surname = "Stevens";
-                    return this;
-                default:
-                case 10:
-                    this.surname = "Durley";
-                    return this;
-            }
-        } else {
-            this.surname = surname;
+            retrieveRandomSurname();
+            retrieveRandomFirstName();
+            retrieveRandomDateOfBirth();
             return this;
+        }
+        this.surname = surname;
+        return this;
+    }
+
+    private void retrieveRandomDateOfBirth() {
+        this.dateOfBirth = new Date(
+                ((int) Math.round(Math.random() * 30) + 80),
+                ((int) Math.round(Math.random() * 11) + 1),
+                ((int) Math.round(Math.random() * 27) + 1));
+    }
+
+    private void retrieveRandomSurname() {
+        switch (((int) Math.round(Math.random() * 9)) + 1) {
+            case 1:
+                this.surname = "Jones";
+                break;
+            case 2:
+                this.surname = "Phillips";
+                break;
+            case 3:
+                this.surname = "Clarke";
+                break;
+            case 4:
+                this.surname = "Hill";
+                break;
+            case 5:
+                this.surname = "Smith";
+                break;
+            case 6:
+                this.surname = "Read";
+                break;
+            case 7:
+                this.surname = "Menzies";
+                break;
+            case 8:
+                this.surname = "Walker";
+                break;
+            case 9:
+                this.surname = "Stevens";
+                break;
+            default:
+            case 10:
+                this.surname = "Durley";
+        }
+    }
+
+    private void retrieveRandomFirstName() {
+        switch (((int) Math.round(Math.random() * 9)) + 1) {
+            case 1:
+                this.firstName = "Sally";
+                this.gender = Gender.FEMALE;
+                break;
+            case 2:
+                this.firstName = "Michael";
+                this.gender = Gender.MALE;
+                break;
+            case 3:
+                this.firstName = "Robert";
+                this.gender = Gender.MALE;
+                break;
+            case 4:
+                this.firstName = "Steve";
+                this.gender = Gender.MALE;
+                break;
+            case 5:
+                this.firstName = "Rodney";
+                this.gender = Gender.MALE;
+                break;
+            case 6:
+                this.firstName = "Paula";
+                this.gender = Gender.FEMALE;
+                break;
+            case 7:
+                this.firstName = "Simon";
+                this.gender = Gender.MALE;
+                break;
+            case 8:
+                this.firstName = "Chris";
+                this.gender = Gender.MALE;
+                break;
+            case 9:
+                this.firstName = "John";
+                this.gender = Gender.MALE;
+                break;
+            default:
+            case 10:
+                this.firstName = "Richard";
+                this.gender = Gender.MALE;
         }
     }
 
     public MemberBuilder withFirstName(String firstName) {
-        if (firstName.equals("")) {
-            switch (((int) Math.round(Math.random() * 9)) + 1) {
-                case 1:
-                    this.firstName = "Stewart";
-                    return this;
-                case 2:
-                    this.firstName = "Michael";
-                    return this;
-                case 3:
-                    this.firstName = "Robert";
-                    return this;
-                case 4:
-                    this.firstName = "Steve";
-                    return this;
-                case 5:
-                    this.firstName = "Rodney";
-                    return this;
-                case 6:
-                    this.firstName = "Paul";
-                    return this;
-                case 7:
-                    this.firstName = "Simon";
-                    return this;
-                case 8:
-                    this.firstName = "Chris";
-                    return this;
-                case 9:
-                    this.firstName = "John";
-                    return this;
-                default:
-                case 10:
-                    this.firstName = "Richard";
-                    return this;
-            }
-        } else {
             this.firstName = firstName;
-            this.gender = Gender.MALE;
             return this;
-        }
     }
 
     public MemberBuilder withAddress(Address address) {
@@ -115,12 +134,11 @@ public final class MemberBuilder {
     }
 
     public MemberBuilder withGender(Gender gender) {
-            this.gender = gender;
-            return this;
+        this.gender = gender;
+        return this;
     }
 
     public Member build() {
-        Member member = new Member(surname, firstName, address, dateOfBirth, gender);
-        return member;
+        return new Member(surname, firstName, address, dateOfBirth, gender);
     }
 }
