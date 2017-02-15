@@ -1,5 +1,8 @@
 package application;
 
+import com.sun.istack.internal.NotNull;
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 
@@ -44,6 +47,12 @@ public class Address {
 
     @Column(name="MODIFIED_TIMESTAMP")
     private Timestamp modifiedTimestamp;
+
+//    @Column(name="ACTIVE")
+//    @Type(type = "true_false")
+//    @NotNull
+//    private boolean active;
+
 
     public Address(String houseName, String streetNameFirst, String streetNameSecond, String town, String city,
                    String postcode, String country) {
