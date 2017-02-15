@@ -27,7 +27,7 @@ public class ManageAddress {
         Transaction transaction = session.beginTransaction();
 
         for (int i = 0; i < 10; i++) {
-            Address newAddress = new Address("name", "first", "second", "town", "city", "postcode", CountryCode.GB.getAlpha3());
+            Address newAddress = new Address(0,"name", "first", "second", "town", "city", "postcode", CountryCode.GB.getAlpha3());
             newAddress.setCreateTimestamp(getCurrentTimeStamp());
             newAddress.setModifiedTimestamp(getCurrentTimeStamp());
             System.out.println(newAddress.toString());

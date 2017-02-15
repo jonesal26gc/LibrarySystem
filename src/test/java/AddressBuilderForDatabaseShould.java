@@ -25,10 +25,10 @@ public class AddressBuilderForDatabaseShould {
             }
 
             for (int i = 0; i < 10; i++) {
-                Address newAddress = AddressBuilder.anAddress().withStreetNameFirst("").build();
+                Address newAddress = AddressBuilder.anAddress().withStreetNameLine1("").build();
 
                 incrementAddressId(ldbc);
-                newAddress.setId(retrieveAddressId(ldbc));
+                newAddress.setAddress_id(retrieveAddressId(ldbc));
                 newAddress.setCreateTimestamp(getCurrentTimeStamp());
                 newAddress.setModifiedTimestamp(getCurrentTimeStamp());
                 System.out.println(newAddress.toString());
@@ -50,10 +50,10 @@ public class AddressBuilderForDatabaseShould {
                         "into LIBRARY.ADDRESS " +
                         "values (?,?,?,?,?,?,?,?,?,?);"
         );
-        insertStatement.setInt(1,address.getId());
-        insertStatement.setString(2,address.getHouseName());
-        insertStatement.setString(3,address.getStreetNameFirst());
-        insertStatement.setString(4,address.getStreetNameSecond());
+        insertStatement.setInt(1,address.getAddress_id());
+        insertStatement.setString(2,address.getBuildingName());
+        insertStatement.setString(3,address.getStreetNameLine1());
+        insertStatement.setString(4,address.getStreetNameLine2());
         insertStatement.setString(5,address.getTown());
         insertStatement.setString(6,address.getCity());
         insertStatement.setString(7,address.getPostcode());

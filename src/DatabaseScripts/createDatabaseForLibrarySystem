@@ -31,15 +31,15 @@ CREATE TABLE LIBRARY.hibernate_sequences
 
 CREATE TABLE LIBRARY.address
     (   address_id              integer      NOT NULL,
-	    house_name              VARCHAR(40)  NOT NULL,
-	    street_name_first       VARCHAR(40)  NOT NULL,
-	    street_name_second      VARCHAR(40)  NOT NULL,
+	    building_name           VARCHAR(40),
+	    street_name_line_1      VARCHAR(40)  NOT NULL,
+	    street_name_line_2      VARCHAR(40),
         town                    VARCHAR(40)  NOT NULL,
         city                    VARCHAR(40)  NOT NULL,
         postcode                VARCHAR(10)  NOT NULL,
         country                 CHAR(3)      NOT NULL,
 	    create_timestamp        timestamp    not null,
-	    modified_timestamp      timestamp    not null,
+	    modified_timestamp      timestamp,
 	    constraint address_id_PK PRIMARY KEY (address_id)
 )
 ;
@@ -53,7 +53,7 @@ CREATE TABLE LIBRARY.member
 	    address_id              integer      not null,
 	    active_indicator        char(1)      not null,
 	    create_timestamp        timestamp    not null,
-	    modified_timestamp      timestamp    not null,
+	    modified_timestamp      timestamp,
         constraint member_id_PK PRIMARY KEY (member_id)
 )
 ;
@@ -68,7 +68,7 @@ CREATE TABLE LIBRARY.BOOK
 	    book_category_id        integer      not null,
 	    book_subject_id         integer      not null,
    	    create_timestamp        timestamp    not null,
-   	    modified_timestamp      timestamp    not null,
+   	    modified_timestamp      timestamp,
         constraint book_id_PK PRIMARY KEY (book_id)
 )
 ;

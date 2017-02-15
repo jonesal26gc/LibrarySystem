@@ -16,7 +16,7 @@ public class AddressBuilderShould {
         for (int i = 2; i < 22; i = i + 2) {
             addresses.add(
                     AddressBuilder.anAddress()
-                            .withStreetNameFirst(i + " Grange Close")
+                            .withStreetNameLine1(i + " Grange Close")
                             .withTown("Hitchin")
                             .withCity("Herts")
                             .withPostcode("SG4 9HD")
@@ -34,7 +34,7 @@ public class AddressBuilderShould {
     public void
     auto_build_an_address() {
         for (int i = 0; i < 20; i++) {
-            Address a1 = AddressBuilder.anAddress().withStreetNameFirst("").build();
+            Address a1 = AddressBuilder.anAddress().withStreetNameLine1("").build();
             System.out.println(a1.toString());
         }
 

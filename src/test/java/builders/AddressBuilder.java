@@ -4,10 +4,10 @@ import application.Address;
 import com.neovisionaries.i18n.CountryCode;
 
 public final class AddressBuilder {
-    private int id;
-    private String houseName;
-    private String streetNameFirst;
-    private String streetNameSecond;
+    private int address_id;
+    private String buildingName;
+    private String streetNameLine1;
+    private String streetNameLine2;
     private String town;
     private String city;
     private String postcode;
@@ -20,65 +20,70 @@ public final class AddressBuilder {
         return new AddressBuilder();
     }
 
-    public AddressBuilder withId(int id) {
-        this.id = id;
+    public AddressBuilder withAddressId(int address_id) {
+        this.address_id = address_id;
         return this;
     }
 
-    public AddressBuilder withHouseName(String houseName) {
-        this.houseName = houseName;
+    public AddressBuilder withBuildingName(String buildingName) {
+        this.buildingName = buildingName;
         return this;
     }
 
-    public AddressBuilder withStreetNameFirst(String streetNameFirst) {
-        if (streetNameFirst.equals("")) {
-            int randomDoorNumber = (int) (Math.round(Math.random() * 199) + 1);
-            switch ((int) (Math.round(Math.random() * 9) + 1)) {
-                case 1:
-                    streetNameFirst = String.format("%1$d Grange Close",randomDoorNumber);
-                    break;
-                case 2:
-                    streetNameFirst = String.format("%1$d Tennyson Avenue",randomDoorNumber);
-                    break;
-                case 3:
-                    streetNameFirst = String.format("%1$d The Avenue",randomDoorNumber);
-                    break;
-                case 4:
-                    streetNameFirst = String.format("%1$d Chilton Road",randomDoorNumber);
-                    break;
-                case 5:
-                    streetNameFirst = String.format("%1$d Newlands Lane",randomDoorNumber);
-                    break;
-                case 6:
-                    streetNameFirst = String.format("%1$d Priory Way",randomDoorNumber);
-                    break;
-                case 7:
-                    streetNameFirst = String.format("%1$d Langbridge Close",randomDoorNumber);
-                    break;
-                case 8:
-                    streetNameFirst = String.format("%1$d Purwell Lane",randomDoorNumber);
-                    break;
-                case 9:
-                    streetNameFirst = String.format("%1$d Boundary Close",randomDoorNumber);
-                    break;
-                default:
-                case 10:
-                    streetNameFirst = String.format("%1$d St. Michael's Road",randomDoorNumber);
-                    break;
-            }
-            this.houseName="";
-            this.streetNameSecond="";
-            this.town = "Hitchin";
-            this.city = "Hertfordshire";
-            this.postcode="";
-            this.country = CountryCode.GB.getAlpha3();
-            }
-        this.streetNameFirst = streetNameFirst;
+    public AddressBuilder withStreetNameLine1(String streetNameLine1) {
+        if (streetNameLine1.equals("")) {
+            retrieveRandomStreetNameLine1();
+            return this;
+        }
+        this.streetNameLine1 = streetNameLine1;
         return this;
     }
 
-    public AddressBuilder withStreetNameSecond(String streetNameSecond) {
-        this.streetNameSecond = streetNameSecond;
+    private void retrieveRandomStreetNameLine1() {
+        int randomDoorNumber = (int) (Math.round(Math.random() * 199) + 1);
+        switch ((int) (Math.round(Math.random() * 9) + 1)) {
+            case 1:
+                this.streetNameLine1 = String.format("%1$d Grange Close", randomDoorNumber);
+                break;
+            case 2:
+                this.streetNameLine1 = String.format("%1$d Tennyson Avenue", randomDoorNumber);
+                break;
+            case 3:
+                this.streetNameLine1 = String.format("%1$d The Avenue", randomDoorNumber);
+                break;
+            case 4:
+                this.streetNameLine1 = String.format("%1$d Chilton Road", randomDoorNumber);
+                break;
+            case 5:
+                this.streetNameLine1 = String.format("%1$d Newlands Lane", randomDoorNumber);
+                break;
+            case 6:
+                this.streetNameLine1 = String.format("%1$d Priory Way", randomDoorNumber);
+                break;
+            case 7:
+                this.streetNameLine1 = String.format("%1$d Langbridge Close", randomDoorNumber);
+                break;
+            case 8:
+                this.streetNameLine1 = String.format("%1$d Purwell Lane", randomDoorNumber);
+                break;
+            case 9:
+                this.streetNameLine1 = String.format("%1$d Boundary Close", randomDoorNumber);
+                break;
+            default:
+            case 10:
+                this.streetNameLine1 = String.format("%1$d St. Michael's Road", randomDoorNumber);
+                break;
+        }
+        this.buildingName = "";
+        this.streetNameLine2 = "";
+        this.town = "Hitchin";
+        this.city = "Hertfordshire";
+        this.postcode = "SG4 ???";
+        this.country = CountryCode.GB.getAlpha3();
+    }
+
+    public AddressBuilder withStreetNameLine2(String streetNameLine2) {
+        this.streetNameLine2 = streetNameLine2;
         return this;
     }
 
@@ -103,7 +108,6 @@ public final class AddressBuilder {
     }
 
     public Address build() {
-        Address address = new Address(houseName, streetNameFirst, streetNameSecond, town, city, postcode, country);
-        return address;
+        return new Address(address_id, buildingName, streetNameLine1, streetNameLine2, town, city, postcode, country);
     }
 }

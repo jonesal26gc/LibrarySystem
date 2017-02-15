@@ -8,10 +8,10 @@ import static org.junit.Assert.assertThat;
 
 public class LibraryShould {
 
-    private Address libraryAddress = new Address("application.Library House", "Upper Tilehouse Street", "", "Hitchin", "Hertfordshire", "UNKNOWN", CountryCode.GB.getAlpha3());
+    private Address libraryAddress = new Address(0,"application.Library House", "Upper Tilehouse Street", "", "Hitchin", "Hertfordshire", "UNKNOWN", CountryCode.GB.getAlpha3());
     private Library library = new Library("Hitchin application.Library", libraryAddress, new BorrowedBookRegister());
 
-    private Address homeAddress = new Address("Home", "26 Grange Close", "", "Hitchin", "Hertfordshire", "SG4 9HD", CountryCode.GB.getAlpha3());
+    private Address homeAddress = new Address(0,"Home", "26 Grange Close", "", "Hitchin", "Hertfordshire", "SG4 9HD", CountryCode.GB.getAlpha3());
 
     private Member member = new Member("Jones", "Tony", homeAddress, new Date(), Gender.MALE);
     private Book book1 = new Book("London Buses", "Fred Bloggs", "v1.1", new Date(), 1.99, BookCategory.NON_FICTION, BookSubject.TRANSPORT);

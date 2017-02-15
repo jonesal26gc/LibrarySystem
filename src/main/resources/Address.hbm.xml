@@ -8,12 +8,12 @@
         <meta attribute="class-description">
             This class contains the Address details.
         </meta>
-        <id name="id" type="int" column="address_id">
+        <address_id name="address_id" type="int" column="address_id">
             <generator class="table"/>
-        </id>
-        <property name="houseName" column="house_name" type="string"/>
-        <property name="streetNameFirst" column="street_name_first" type="string"/>
-        <property name="streetNameSecond" column="street_name_second" type="string"/>
+        </address_id>
+        <property name="buildingName" column="house_name" type="string"/>
+        <property name="streetNameLine1" column="street_name_first" type="string"/>
+        <property name="streetNameLine2" column="street_name_second" type="string"/>
         <property name="town" column="town" type="string"/>
         <property name="city" column="city" type="string"/>
         <property name="postcode" column="postcode" type="string"/>

@@ -1,7 +1,6 @@
 package application;
 
 import com.sun.istack.internal.NotNull;
-import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -10,39 +9,47 @@ import java.sql.Timestamp;
 @Table(name="ADDRESS")
 public class Address {
     @TableGenerator(
-            name="addressGen",
+            name="addressIdGen",
             initialValue = 0,
             allocationSize = 1,
             table="hibernate_sequences",
             pkColumnName="sequence_name",
             valueColumnName="next_val",
-            pkColumnValue="ADDR_ID")
-    @Id @GeneratedValue(strategy = GenerationType.TABLE,generator = "addressGen")
+            pkColumnValue="ADDRESS_ID")
+
+    @Id @GeneratedValue(strategy = GenerationType.TABLE,generator = "addressIdGen")
     @Column(name="ADDRESS_ID")
-    private int id;
+    private int address_id;
 
-    @Column(name="HOUSE_NAME")
-    private String houseName;
+    @Column(name="BUILDING_NAME")
+    private String buildingName;
 
-    @Column(name="STREET_NAME_FIRST")
-    private String streetNameFirst;
 
-    @Column(name="STREET_NAME_SECOND")
-    private String streetNameSecond;
+    @Column(name="STREET_NAME_LINE_1")
+    @NotNull
+    private String streetNameLine1;
+
+    @Column(name="STREET_NAME_LINE_2")
+    private String streetNameLine2;
 
     @Column(name="TOWN")
+    @NotNull
     private String town;
 
+    @NotNull
     @Column(name="CITY")
     private String city;
 
     @Column(name="POSTCODE")
+    @NotNull
     private String postcode;
 
     @Column(name="COUNTRY")
+    @NotNull
     private String country;
 
     @Column(name="CREATE_TIMESTAMP")
+    @NotNull
     private Timestamp createTimestamp;
 
     @Column(name="MODIFIED_TIMESTAMP")
@@ -54,35 +61,35 @@ public class Address {
 //    private boolean active;
 
 
-    public Address(String houseName, String streetNameFirst, String streetNameSecond, String town, String city,
+    public Address(int address_id, String buildingName, String streetNameLine1, String streetNameLine2, String town, String city,
                    String postcode, String country) {
-        this.houseName = houseName;
-        this.streetNameFirst = streetNameFirst;
-        this.streetNameSecond = streetNameSecond;
+        this.address_id = address_id;
+        this.buildingName = buildingName;
+        this.streetNameLine1 = streetNameLine1;
         this.town = town;
         this.city = city;
         this.postcode = postcode;
         this.country = country;
     }
 
-    public int getId() {
-        return id;
+    public int getAddress_id() {
+        return address_id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setAddress_id(int address_id) {
+        this.address_id = address_id;
     }
 
-    public String getHouseName() {
-        return houseName;
+    public String getBuildingName() {
+        return buildingName;
     }
 
-    public String getStreetNameFirst() {
-        return streetNameFirst;
+    public String getStreetNameLine1() {
+        return streetNameLine1;
     }
 
-    public String getStreetNameSecond() {
-        return streetNameSecond;
+    public String getStreetNameLine2() {
+        return streetNameLine2;
     }
 
     public String getTown() {
@@ -120,10 +127,10 @@ public class Address {
     @Override
     public String toString() {
         return "Address{" +
-                "id=" + id +
-                ", houseName='" + houseName + '\'' +
-                ", streetNameFirst='" + streetNameFirst + '\'' +
-                ", streetNameSecond='" + streetNameSecond + '\'' +
+                "address_id=" + address_id +
+                ", buildingName='" + buildingName + '\'' +
+                ", streetNameLine1='" + streetNameLine1 + '\'' +
+                ", streetNameLine2='" + streetNameLine2 + '\'' +
                 ", town='" + town + '\'' +
                 ", city='" + city + '\'' +
                 ", postcode='" + postcode + '\'' +
