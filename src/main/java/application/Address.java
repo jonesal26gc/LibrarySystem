@@ -37,7 +37,7 @@ public class Address {
     private String postcode;
 
     @Column(name="COUNTRY")
-    private Country country;
+    private String country;
 
     @Column(name="CREATE_TIMESTAMP")
     private Timestamp createTimestamp;
@@ -46,7 +46,7 @@ public class Address {
     private Timestamp modifiedTimestamp;
 
     public Address(String houseName, String streetNameFirst, String streetNameSecond, String town, String city,
-                   String postcode, Country country) {
+                   String postcode, String country) {
         this.houseName = houseName;
         this.streetNameFirst = streetNameFirst;
         this.streetNameSecond = streetNameSecond;
@@ -88,7 +88,7 @@ public class Address {
         return postcode;
     }
 
-    public Country getCountry() {
+    public String getCountry() {
         return country;
     }
 

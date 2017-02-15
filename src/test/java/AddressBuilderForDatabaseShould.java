@@ -1,9 +1,9 @@
 import application.Address;
-import application.LibraryDatabaseConnection;
-import builders.AddressBuilder;
-import org.junit.Test;
+        import application.LibraryDatabaseConnection;
+        import builders.AddressBuilder;
+        import org.junit.Test;
 
-import java.sql.*;
+        import java.sql.*;
 
 public class AddressBuilderForDatabaseShould {
 
@@ -57,7 +57,7 @@ public class AddressBuilderForDatabaseShould {
         insertStatement.setString(5,address.getTown());
         insertStatement.setString(6,address.getCity());
         insertStatement.setString(7,address.getPostcode());
-        insertStatement.setString(8,address.getCountry().getCountryCode());
+        insertStatement.setString(8,address.getCountry());
         insertStatement.setTimestamp(9,address.getCreateTimestamp());
         insertStatement.setTimestamp(10,address.getModifiedTimestamp());
         insertStatement.execute();

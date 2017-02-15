@@ -1,5 +1,6 @@
 package application;
 
+import com.neovisionaries.i18n.CountryCode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -26,7 +27,7 @@ public class ManageAddress {
 
         Transaction transaction = session.beginTransaction();
 
-        Address newAddress = new Address("name", "first", "second", "town", "city", "postcode", Country.UNITED_KINGDOM);
+        Address newAddress = new Address("name", "first", "second", "town", "city", "postcode", CountryCode.UK.getAlpha3());
         newAddress.setCreateTimestamp(getCurrentTimeStamp());
         newAddress.setModifiedTimestamp(getCurrentTimeStamp());
         int addressId = (Integer) session.save(newAddress);
