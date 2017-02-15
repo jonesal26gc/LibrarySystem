@@ -1,4 +1,5 @@
 import application.*;
+import com.neovisionaries.i18n.CountryCode;
 import org.junit.Rule;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -21,12 +22,12 @@ public class MockTest {
     @Test
     public void
     return_book() {
-        Address libraryAddress = new Address("application.Library House", "Upper Tilehouse Street", "", "Hitchin", "Hertfordshire", "UNKNOWN", Country.UNITED_KINGDOM);
+        Address libraryAddress = new Address("application.Library House", "Upper Tilehouse Street", "", "Hitchin", "Hertfordshire", "UNKNOWN", CountryCode.GB.getAlpha3());
 
         // for Mock to work, the interface to be overridden must be injected !!
         Library library = new Library("Hitchin application.Library", libraryAddress, borrowedBookRepository);
 
-        Address homeAddress = new Address("Home", "26 Grange Close", "", "Hitchin", "Herfordshire", "SG4 9HD", Country.UNITED_KINGDOM);
+        Address homeAddress = new Address("Home", "26 Grange Close", "", "Hitchin", "Herfordshire", "SG4 9HD", CountryCode.GB.getAlpha3());
 
         Member member = new Member("Jones", "Tony", homeAddress, new Date(), Gender.MALE);
         Book book1 = new Book("London Buses", "Fred Bloggs", "v1.1", new Date(), 1.99, BookCategory.NON_FICTION, BookSubject.TRANSPORT);

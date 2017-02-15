@@ -11,7 +11,7 @@
             com.teradata.jdbc.TeraDriver
         </property>
         <property name="hibernate.connection.url">
-            jdbc:teradata://192.168.0.15/TMODE=ANSI,CHARSET=UTF8,DATABASE=LIBRARY
+            jdbc:teradata://192.168.1.10/TMODE=ANSI,CHARSET=UTF8,DATABASE=LIBRARY
         </property>
         <property name="hibernate.connection.username">
             dbc

@@ -16,26 +16,27 @@ public class ManageAddress {
                 .buildSessionFactory();
 
         ManageAddress MA = new ManageAddress();
-        Integer addressId = MA.addAddress();
-        System.out.println("row=" + addressId);
+        MA.addAddress();
 
         sessionFactory.close();
     }
 
-    private Integer addAddress() {
+    private void addAddress() {
         Session session = sessionFactory.openSession();
 
         Transaction transaction = session.beginTransaction();
 
-        Address newAddress = new Address("name", "first", "second", "town", "city", "postcode", CountryCode.UK.getAlpha3());
-        newAddress.setCreateTimestamp(getCurrentTimeStamp());
-        newAddress.setModifiedTimestamp(getCurrentTimeStamp());
-        int addressId = (Integer) session.save(newAddress);
+        for (int i = 0; i < 10; i++) {
+            Address newAddress = new Address("name", "first", "second", "town", "city", "postcode", CountryCode.GB.getAlpha3());
+            newAddress.setCreateTimestamp(getCurrentTimeStamp());
+            newAddress.setModifiedTimestamp(getCurrentTimeStamp());
+            System.out.println(newAddress.toString());
+            int addressId = (Integer) session.save(newAddress);
+            System.out.println("row=" + addressId);
+        }
 
         transaction.commit();
         session.close();
-
-        return addressId;
     }
 
     private static java.sql.Timestamp getCurrentTimeStamp() {

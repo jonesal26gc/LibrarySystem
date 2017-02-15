@@ -16,7 +16,9 @@ public class CountryCodeShould {
             System.out.println(element.getAlpha3() + " = " + element.getName());
         }
 
-//        System.out.println(CountryCode.getByCode("GBR").getName());
+        System.out.println(CountryCode.GB.getAlpha3());
+
+
 
 
     }

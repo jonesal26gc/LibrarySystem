@@ -1,7 +1,6 @@
 package builders;
 
 import application.Address;
-import application.Country;
 import com.neovisionaries.i18n.CountryCode;
 
 public final class AddressBuilder {
@@ -72,7 +71,7 @@ public final class AddressBuilder {
             this.town = "Hitchin";
             this.city = "Hertfordshire";
             this.postcode="";
-            this.country = CountryCode.UK.getAlpha3();
+            this.country = CountryCode.GB.getAlpha3();
             }
         this.streetNameFirst = streetNameFirst;
         return this;

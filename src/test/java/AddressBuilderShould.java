@@ -1,5 +1,6 @@
 import application.Address;
 import builders.AddressBuilder;
+import com.neovisionaries.i18n.CountryCode;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class AddressBuilderShould {
                             .withTown("Hitchin")
                             .withCity("Herts")
                             .withPostcode("SG4 9HD")
-                            .withCountry(application.Country.UNITED_KINGDOM)
+                            .withCountry(CountryCode.GB.getAlpha3())
                             .build());
             ;
         }
