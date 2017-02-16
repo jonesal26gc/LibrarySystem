@@ -10,8 +10,8 @@ public class Membership {
     }
 
     public Member addMember(Member member) {
-        member.setNumber(findNextMemberNumber());
-        members.put(member.getNumber(), member);
+        member.setMember_id(findNextMemberNumber());
+        members.put(member.getMember_id(), member);
         return member;
     }
 

@@ -12,7 +12,7 @@ public class BorrowedBook {
 
     public BorrowedBook(Book book, Member member) {
         this.bookNumber = book.getNumber();
-        this.memberNumber = member.getNumber();
+        this.memberNumber = member.getMember_id();
         this.active=true;
         this.outDate=new Date();
     }

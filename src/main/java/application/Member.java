@@ -3,7 +3,7 @@ package application;
 import java.util.Date;
 
 public class Member {
-    private int number = 0;
+    private int member_id = 0;
     private String surname;
     private String firstName;
     private Address address;
@@ -31,12 +31,12 @@ public class Member {
         this.active = active;
     }
 
-    public int getNumber() {
-        return number;
+    public int getMember_id() {
+        return member_id;
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    public void setMember_id(int member_id) {
+        this.member_id = member_id;
     }
 
     public String getSurname() {
@@ -73,7 +73,7 @@ public class Member {
 
     @Override
     public int hashCode() {
-        int result = number;
+        int result = member_id;
         result = 31 * result + (surname != null ? surname.hashCode() : 0);
         result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
         result = 31 * result + (dateOfBirth != null ? dateOfBirth.hashCode() : 0);
@@ -89,7 +89,7 @@ public class Member {
 
         Member member = (Member) o;
 
-        if (number != member.number) return false;
+        if (member_id != member.member_id) return false;
         if (active != member.active) return false;
         if (surname != null ? !surname.equals(member.surname) : member.surname != null) return false;
         if (firstName != null ? !firstName.equals(member.firstName) : member.firstName != null) return false;
@@ -101,7 +101,7 @@ public class Member {
     @Override
     public String toString() {
         return "application.Member{" +
-                "number=" + number +
+                "member_id=" + member_id +
                 ", surname='" + surname + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", address=" + address +

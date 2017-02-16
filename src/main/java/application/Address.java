@@ -24,7 +24,6 @@ public class Address {
     @Column(name="BUILDING_NAME")
     private String buildingName;
 
-
     @Column(name="STREET_NAME_LINE_1")
     @NotNull
     private String streetNameLine1;
@@ -61,10 +60,9 @@ public class Address {
 //    private boolean active;
 
 
-    public Address(int address_id, String buildingName, String streetNameLine1, String streetNameLine2, String town, String city,
+    public Address(int address_id, String streetNameLine1, String town, String city,
                    String postcode, String country) {
         this.address_id = address_id;
-        this.buildingName = buildingName;
         this.streetNameLine1 = streetNameLine1;
         this.town = town;
         this.city = city;

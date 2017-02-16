@@ -74,8 +74,6 @@ public final class AddressBuilder {
                 this.streetNameLine1 = String.format("%1$d St. Michael's Road", randomDoorNumber);
                 break;
         }
-        this.buildingName = "";
-        this.streetNameLine2 = "";
         this.town = "Hitchin";
         this.city = "Hertfordshire";
         this.postcode = "SG4 ???";
@@ -108,6 +106,6 @@ public final class AddressBuilder {
     }
 
     public Address build() {
-        return new Address(address_id, buildingName, streetNameLine1, streetNameLine2, town, city, postcode, country);
+        return new Address(address_id, streetNameLine1, town, city, postcode, country);
     }
 }
