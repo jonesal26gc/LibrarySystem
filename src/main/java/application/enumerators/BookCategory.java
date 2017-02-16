@@ -1,4 +1,4 @@
-package application;
+package application.enumerators;
 
 public enum BookCategory {
     UNKNOWN("UKN"),

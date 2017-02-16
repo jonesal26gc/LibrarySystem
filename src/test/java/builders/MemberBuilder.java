@@ -1,7 +1,7 @@
 package builders;
 
 import application.model.Address;
-import application.Gender;
+import application.enumerators.Gender;
 import application.model.Member;
 
 import java.util.Date;

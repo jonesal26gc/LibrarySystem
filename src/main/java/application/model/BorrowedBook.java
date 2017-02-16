@@ -1,22 +1,49 @@
 package application.model;
 
+import com.sun.istack.internal.NotNull;
+
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table(name="BORROWEDBOOK")
 public class BorrowedBook {
-    private int borrowedBookId;
-    private int bookId;
-    private int memberId;
-    private boolean activeIndicator;
-    private Date outDate;
-    private Date inDate = null;
+    // generate the unique from the "hibernate_sequences" table on the database.
+    // The specific key for the sequence row is identified.
+    @TableGenerator(
+            name = "BorrowedBookIdGen",         // name of this generator.
+            initialValue = 0,                   // starting value if the row is not already present.
+            allocationSize = 1,                 // increment.
+            table = "hibernate_sequences",      // table name for sequences.
+            pkColumnName = "sequence_name",     // 'key' column name.
+            valueColumnName = "next_val",       // 'next value' column name.
+            pkColumnValue = "BORROWED_BOOK_ID") // key value for this row.
 
-    public BorrowedBook(int borrowedBookId, int bookId,
-                        int memberId, boolean activeIndicator,
-                        Date outDate) {
+    // Unique key.
+    @Id
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "BorrowedBookIdGen")
+    @Column(name = "BORROWED_BOOK_ID")
+    private int borrowedBookId;
+
+    @OneToOne
+    @JoinColumn(name="BOOK_ID")                 // This is the foreign key to the BOOK table.
+    private Book book;
+
+    @OneToOne
+    @JoinColumn(name="MEMBER_ID")               // This is the foreign key to the MEMBER table.
+    private Member member;
+
+    @Column(name = "OUT_DATE")
+    @NotNull
+    private Date outDate;
+
+    @Column(name = "IN_DATE")
+    private Date inDate;
+
+    public BorrowedBook(int borrowedBookId, Book book, Member member, Date outDate) {
         this.borrowedBookId = borrowedBookId;
-        this.bookId = bookId;
-        this.memberId = memberId;
-        this.activeIndicator = activeIndicator;
+        this.book = book;
+        this.member = member;
         this.outDate = outDate;
     }
 
@@ -24,9 +51,8 @@ public class BorrowedBook {
     public String toString() {
         return "BorrowedBook{" +
                 "borrowedBookId=" + borrowedBookId +
-                ", bookId=" + bookId +
-                ", memberId=" + memberId +
-                ", activeIndicator=" + activeIndicator +
+                ", book=" + book +
+                ", member=" + member +
                 ", outDate=" + outDate +
                 ", inDate=" + inDate +
                 '}';
@@ -40,28 +66,20 @@ public class BorrowedBook {
         this.borrowedBookId = borrowedBookId;
     }
 
-    public int getBookId() {
-        return bookId;
+    public Book getBook() {
+        return book;
     }
 
-    public void setBookId(int bookId) {
-        this.bookId = bookId;
+    public void setBook(Book book) {
+        this.book = book;
     }
 
-    public int getMemberId() {
-        return memberId;
+    public Member getMember() {
+        return member;
     }
 
-    public void setMemberId(int memberId) {
-        this.memberId = memberId;
-    }
-
-    public boolean isActiveIndicator() {
-        return activeIndicator;
-    }
-
-    public void setActiveIndicator(boolean activeIndicator) {
-        this.activeIndicator = activeIndicator;
+    public void setMember(Member member) {
+        this.member = member;
     }
 
     public Date getOutDate() {

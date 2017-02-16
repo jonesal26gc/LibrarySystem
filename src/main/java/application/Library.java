@@ -5,6 +5,8 @@ import application.model.Book;
 import application.model.BorrowedBook;
 import application.model.Member;
 
+import java.util.Date;
+
 public class Library {
     private String name;
     private Address address;
@@ -43,7 +45,7 @@ public class Library {
     }
 
     public BorrowedBook borrowBook(Book book, Member member) {
-        return borrowedBookRepository.insertBorrowedBook(new BorrowedBook(book, member));
+        return borrowedBookRepository.insertBorrowedBook(new BorrowedBook(0, book, member, new Date()));
     }
 
     public BorrowedBook returnBook(BorrowedBook borrowedBook) {

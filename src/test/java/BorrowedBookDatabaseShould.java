@@ -1,4 +1,7 @@
 import application.*;
+import application.enumerators.BookCategory;
+import application.enumerators.BookSubject;
+import application.enumerators.Gender;
 import application.model.Book;
 import application.model.BorrowedBook;
 import application.model.Member;
