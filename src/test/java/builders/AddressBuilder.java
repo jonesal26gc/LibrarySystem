@@ -1,6 +1,6 @@
 package builders;
 
-import application.Address;
+import application.model.Address;
 import com.neovisionaries.i18n.CountryCode;
 
 public final class AddressBuilder {

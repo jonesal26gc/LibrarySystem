@@ -1,4 +1,6 @@
 import application.*;
+import application.model.Address;
+import application.model.Member;
 import com.neovisionaries.i18n.CountryCode;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +15,7 @@ public class LibraryShould {
 
     private Address homeAddress = new Address(0, "26 Grange Close", "Hitchin", "Hertfordshire", "SG4 9HD", CountryCode.GB.getAlpha3());
 
-    private Member member = new Member("Jones", "Tony", homeAddress, new Date(), Gender.MALE);
+    private Member member = new Member(0,"Jones", "Tony", homeAddress, new Date(), Gender.MALE.getGenderCode());
     private Book book1 = new Book("London Buses", "Fred Bloggs", "v1.1", new Date(), 1.99, BookCategory.NON_FICTION, BookSubject.TRANSPORT);
 
     private Book book2 = new Book("More On Buses", "Simon Trigg", "v1.1", new Date(), 10.99, BookCategory.NON_FICTION, BookSubject.TRANSPORT);

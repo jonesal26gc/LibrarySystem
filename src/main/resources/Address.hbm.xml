@@ -18,7 +18,7 @@
         <property name="city" column="city" type="string"/>
         <property name="postcode" column="postcode" type="string"/>
         <property name="country" column="country" type="string"/>
-        <property name="createTimestamp" column="create_timestamp" type="timestamp"/>
+        <property name="createdTimestamp" column="create_timestamp" type="timestamp"/>
         <property name="modifiedTimestamp" column="modified_timestamp" type="timestamp"/>
     </class>
 </hibernate-mapping>

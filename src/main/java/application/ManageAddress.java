@@ -1,5 +1,6 @@
 package application;
 
+import application.model.Address;
 import com.neovisionaries.i18n.CountryCode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -28,7 +29,7 @@ public class ManageAddress {
 
         for (int i = 0; i < 10; i++) {
             Address newAddress = new Address(0, "first", "town", "city", "postcode", CountryCode.GB.getAlpha3());
-            newAddress.setCreateTimestamp(getCurrentTimeStamp());
+            newAddress.setCreatedTimestamp(getCurrentTimeStamp());
             newAddress.setModifiedTimestamp(getCurrentTimeStamp());
             System.out.println(newAddress.toString());
             int addressId = (Integer) session.save(newAddress);

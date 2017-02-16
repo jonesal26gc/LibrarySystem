@@ -1,9 +1,14 @@
-package application;
+package application.model;
 
 import com.sun.istack.internal.NotNull;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+
+/***********************************************
+ * This is the MODEL for HIBERNATE access to the
+ * ADDRESS table.
+ */
 
 @Entity
 @Table(name="ADDRESS")
@@ -17,7 +22,8 @@ public class Address {
             valueColumnName="next_val",
             pkColumnValue="ADDRESS_ID")
 
-    @Id @GeneratedValue(strategy = GenerationType.TABLE,generator = "addressIdGen")
+    @Id
+    @GeneratedValue(strategy = GenerationType.TABLE,generator = "addressIdGen")
     @Column(name="ADDRESS_ID")
     private int address_id;
 
@@ -47,18 +53,12 @@ public class Address {
     @NotNull
     private String country;
 
-    @Column(name="CREATE_TIMESTAMP")
+    @Column(name="CREATED_TIMESTAMP")
     @NotNull
-    private Timestamp createTimestamp;
+    private Timestamp createdTimestamp;
 
     @Column(name="MODIFIED_TIMESTAMP")
     private Timestamp modifiedTimestamp;
-
-//    @Column(name="ACTIVE")
-//    @Type(type = "true_false")
-//    @NotNull
-//    private boolean active;
-
 
     public Address(int address_id, String streetNameLine1, String town, String city,
                    String postcode, String country) {
@@ -106,12 +106,12 @@ public class Address {
         return country;
     }
 
-    public Timestamp getCreateTimestamp() {
-        return createTimestamp;
+    public Timestamp getCreatedTimestamp() {
+        return createdTimestamp;
     }
 
-    public void setCreateTimestamp(Timestamp createTimestamp) {
-        this.createTimestamp = createTimestamp;
+    public void setCreatedTimestamp(Timestamp createdTimestamp) {
+        this.createdTimestamp = createdTimestamp;
     }
 
     public Timestamp getModifiedTimestamp() {
@@ -120,6 +120,14 @@ public class Address {
 
     public void setModifiedTimestamp(Timestamp modifiedTimestamp) {
         this.modifiedTimestamp = modifiedTimestamp;
+    }
+
+    public void setBuildingName(String buildingName) {
+        this.buildingName = buildingName;
+    }
+
+    public void setStreetNameLine2(String streetNameLine2) {
+        this.streetNameLine2 = streetNameLine2;
     }
 
     @Override
@@ -133,7 +141,7 @@ public class Address {
                 ", city='" + city + '\'' +
                 ", postcode='" + postcode + '\'' +
                 ", country=" + country +
-                ", createTimestamp=" + createTimestamp +
+                ", createdTimestamp=" + createdTimestamp +
                 ", modifiedTimestamp=" + modifiedTimestamp +
                 '}';
     }

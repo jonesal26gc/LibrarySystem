@@ -1,4 +1,4 @@
-import application.Address;
+import application.model.Address;
 import builders.AddressBuilder;
 import com.neovisionaries.i18n.CountryCode;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-import application.Address;
+import application.model.Address;
         import application.LibraryDatabaseConnection;
         import builders.AddressBuilder;
         import org.junit.Test;
@@ -29,7 +29,7 @@ public class AddressBuilderForDatabaseShould {
 
                 incrementAddressId(ldbc);
                 newAddress.setAddress_id(retrieveAddressId(ldbc));
-                newAddress.setCreateTimestamp(getCurrentTimeStamp());
+                newAddress.setCreatedTimestamp(getCurrentTimeStamp());
                 newAddress.setModifiedTimestamp(getCurrentTimeStamp());
                 System.out.println(newAddress.toString());
                 insertAddress(ldbc,newAddress);
@@ -58,7 +58,7 @@ public class AddressBuilderForDatabaseShould {
         insertStatement.setString(6,address.getCity());
         insertStatement.setString(7,address.getPostcode());
         insertStatement.setString(8,address.getCountry());
-        insertStatement.setTimestamp(9,address.getCreateTimestamp());
+        insertStatement.setTimestamp(9,address.getCreatedTimestamp());
         insertStatement.setTimestamp(10,address.getModifiedTimestamp());
         insertStatement.execute();
         insertStatement.close();

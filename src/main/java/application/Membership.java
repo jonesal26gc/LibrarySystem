@@ -1,5 +1,7 @@
 package application;
 
+import application.model.Member;
+
 import java.util.HashMap;
 
 public class Membership {

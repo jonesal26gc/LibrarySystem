@@ -1,5 +1,8 @@
 package application;
 
+import application.model.Address;
+import application.model.Member;
+
 public class Library {
     private String name;
     private Address address;

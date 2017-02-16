@@ -25,7 +25,6 @@ CREATE TABLE LIBRARY.hibernate_sequences
 )
 ;
 
-
 CREATE TABLE LIBRARY.address
     (   address_id              integer      NOT NULL,
 	    building_name           VARCHAR(40),
@@ -35,7 +34,7 @@ CREATE TABLE LIBRARY.address
         city                    VARCHAR(40)  NOT NULL,
         postcode                VARCHAR(10)  NOT NULL,
         country                 CHAR(3)      NOT NULL,
-	    create_timestamp        timestamp    not null,
+	    created_timestamp       timestamp    not null,
 	    modified_timestamp      timestamp,
 	    constraint address_id_PK PRIMARY KEY (address_id)
 )
@@ -43,13 +42,13 @@ CREATE TABLE LIBRARY.address
 
 CREATE TABLE LIBRARY.member
     (   member_id               integer      NOT NULL,
-	    surname                 VARCHAR(80)  NOT NULL,
-	    first_name              varchar(80)  not null,
+	    surname                 VARCHAR(40)  NOT NULL,
+	    forename                varchar(40)  not null,
 	    date_of_birth           date         not null,
-	    gender                  char(1)      not null,
+	    gender_code             char(1)      not null,
 	    address_id              integer      not null,
 	    active_indicator        char(1)      not null,
-	    create_timestamp        timestamp    not null,
+	    created_timestamp       timestamp    not null,
 	    modified_timestamp      timestamp,
         constraint member_id_PK PRIMARY KEY (member_id)
 )
@@ -64,7 +63,7 @@ CREATE TABLE LIBRARY.BOOK
 	    cost_price              decimal(7,2) not null,
 	    book_category_id        integer      not null,
 	    book_subject_id         integer      not null,
-   	    create_timestamp        timestamp    not null,
+   	    created_timestamp       timestamp    not null,
    	    modified_timestamp      timestamp,
         constraint book_id_PK PRIMARY KEY (book_id)
 )

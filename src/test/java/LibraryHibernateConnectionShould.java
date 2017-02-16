@@ -1,6 +1,8 @@
-import application.Address;
+import application.model.Address;
 import application.LibraryHibernateConnection;
-import com.neovisionaries.i18n.CountryCode;
+import application.model.Member;
+import builders.AddressBuilder;
+import builders.MemberBuilder;
 import org.junit.Test;
 
 public class LibraryHibernateConnectionShould {
@@ -14,11 +16,15 @@ public class LibraryHibernateConnectionShould {
         lhc.startTransaction();
 
         for (int i = 0; i < 10; i++) {
-            Address newAddress = new Address(0, "first", "town", "city", "postcode", CountryCode.GB.getAlpha3());
-            newAddress.setCreateTimestamp(lhc.getCurrentTimeStamp());
+            Address newAddress = AddressBuilder.anAddress().withStreetNameLine1("").build();
+            newAddress.setCreatedTimestamp(lhc.getCurrentTimeStamp());
             System.out.println(newAddress.toString());
-            int addressId = (Integer) lhc.session.save(newAddress);
-            System.out.println("row=" + addressId);
+
+            Member newMember = MemberBuilder.aMember().withSurname("").withAddress(newAddress).build();
+            System.out.println(newMember.toString());
+
+            int memberId = (Integer) lhc.session.save(newMember);
+            System.out.println("row=" + memberId);
         }
 
         lhc.endTransaction();

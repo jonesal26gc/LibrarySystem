@@ -1,17 +1,18 @@
 package builders;
 
-import application.Address;
+import application.model.Address;
 import application.Gender;
-import application.Member;
+import application.model.Member;
 
 import java.util.Date;
 
 public final class MemberBuilder {
+    private int member_id;
     private String surname;
-    private String firstName;
+    private String forename;
     private Address address;
     private Date dateOfBirth;
-    private Gender gender;
+    private String genderCode;
 
     private MemberBuilder() {
     }
@@ -23,19 +24,12 @@ public final class MemberBuilder {
     public MemberBuilder withSurname(String surname) {
         if (surname.equals("")) {
             retrieveRandomSurname();
-            retrieveRandomFirstName();
+            retrieveRandomForename();
             retrieveRandomDateOfBirth();
             return this;
         }
         this.surname = surname;
         return this;
-    }
-
-    private void retrieveRandomDateOfBirth() {
-        this.dateOfBirth = new Date(
-                ((int) Math.round(Math.random() * 30) + 80),
-                ((int) Math.round(Math.random() * 11) + 1),
-                ((int) Math.round(Math.random() * 27) + 1));
     }
 
     private void retrieveRandomSurname() {
@@ -73,53 +67,60 @@ public final class MemberBuilder {
         }
     }
 
-    private void retrieveRandomFirstName() {
+    private void retrieveRandomForename() {
         switch (((int) Math.round(Math.random() * 9)) + 1) {
             case 1:
-                this.firstName = "Sally";
-                this.gender = Gender.FEMALE;
+                this.forename = "Sally";
+                this.genderCode = Gender.FEMALE.getGenderCode();
                 break;
             case 2:
-                this.firstName = "Michael";
-                this.gender = Gender.MALE;
+                this.forename = "Michael";
+                this.genderCode = Gender.MALE.getGenderCode();
                 break;
             case 3:
-                this.firstName = "Robert";
-                this.gender = Gender.MALE;
+                this.forename = "Robert";
+                this.genderCode = Gender.MALE.getGenderCode();
                 break;
             case 4:
-                this.firstName = "Steve";
-                this.gender = Gender.MALE;
+                this.forename = "Steve";
+                this.genderCode = Gender.MALE.getGenderCode();
                 break;
             case 5:
-                this.firstName = "Rodney";
-                this.gender = Gender.MALE;
+                this.forename = "Rodney";
+                this.genderCode = Gender.MALE.getGenderCode();
                 break;
             case 6:
-                this.firstName = "Paula";
-                this.gender = Gender.FEMALE;
+                this.forename = "Paula";
+                this.genderCode = Gender.FEMALE.getGenderCode();
                 break;
             case 7:
-                this.firstName = "Simon";
-                this.gender = Gender.MALE;
+                this.forename = "Simon";
+                this.genderCode = Gender.MALE.getGenderCode();
                 break;
             case 8:
-                this.firstName = "Chris";
-                this.gender = Gender.MALE;
+                this.forename = "Chris";
+                this.genderCode = Gender.MALE.getGenderCode();
                 break;
             case 9:
-                this.firstName = "John";
-                this.gender = Gender.MALE;
+                this.forename = "John";
+                this.genderCode = Gender.MALE.getGenderCode();
                 break;
             default:
             case 10:
-                this.firstName = "Richard";
-                this.gender = Gender.MALE;
+                this.forename = "Richard";
+                this.genderCode = Gender.MALE.getGenderCode();
         }
     }
 
-    public MemberBuilder withFirstName(String firstName) {
-            this.firstName = firstName;
+    private void retrieveRandomDateOfBirth() {
+        this.dateOfBirth = new Date(
+                ((int) Math.round(Math.random() * 30) + 80),
+                ((int) Math.round(Math.random() * 11) + 1),
+                ((int) Math.round(Math.random() * 27) + 1));
+    }
+
+    public MemberBuilder withForename(String forename) {
+            this.forename = forename;
             return this;
     }
 
@@ -133,12 +134,12 @@ public final class MemberBuilder {
         return this;
     }
 
-    public MemberBuilder withGender(Gender gender) {
-        this.gender = gender;
+    public MemberBuilder withGenderCode(String genderCode) {
+        this.genderCode = genderCode;
         return this;
     }
 
     public Member build() {
-        return new Member(surname, firstName, address, dateOfBirth, gender);
+        return new Member(member_id, surname, forename, address, dateOfBirth, genderCode);
     }
 }
