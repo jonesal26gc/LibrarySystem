@@ -1,4 +1,6 @@
 import application.*;
+import application.model.Book;
+import application.model.BorrowedBook;
 import application.model.Member;
 import org.junit.Test;
 
@@ -59,7 +61,7 @@ public class BorrowedBookDatabaseShould {
         Book book1 = new Book("London Buses", "Fred Bloggs", "v1.1", new Date(), 1.99, BookCategory.NON_FICTION, BookSubject.TRANSPORT);
 
         BorrowedBook bb = new BorrowedBook(book1,member);
-        bb.setNumber(12);
+        bb.setBorrowedBookId(12);
         borrowedBookDatabaseTable.returnBorrowedBook(bb);
         System.out.println(bb.toString());
 

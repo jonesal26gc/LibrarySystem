@@ -73,18 +73,18 @@ CREATE TABLE LIBRARY.BOOK
 --;
 
 CREATE TABLE LIBRARY.BORROWED_BOOK
-    (   borrowed_book_id        integer      NOT NULL,
+    (   borrowedBookId        integer      NOT NULL,
 	    book_id                 integer      NOT NULL,
 	    member_id               integer      not null,
 	    active_indicator        char(1)      not null,
 	    out_date                timestamp    not null,
 	    in_date                 timestamp,
-        constraint borrowed_book_id_PK PRIMARY KEY (borrowed_book_id)
+        constraint borrowed_book_id_PK PRIMARY KEY (borrowedBookId)
 )
 ;
 
 create unique index borrowed_book_SK_1
-    ( member_id, borrowed_book_id ) on library.borrowed_book;
+    ( member_id, borrowedBookId ) on library.borrowed_book;
 
 create index borrowed_book_SK_2
     ( book_id, out_date ) on library.borrowed_book;
@@ -102,7 +102,7 @@ CREATE TABLE LIBRARY.book_id_SEQ
    ;
 
 CREATE TABLE LIBRARY.borrowed_book_id_SEQ
-   ( borrowed_book_id INTEGER NOT NULL )
+   ( borrowedBookId INTEGER NOT NULL )
    ;
 
 ------------------------------------- end of job ---------------------------------------

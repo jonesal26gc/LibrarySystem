@@ -1,5 +1,7 @@
 package application;
 
+import application.model.BorrowedBook;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,7 +18,7 @@ public class BorrowedBookTable implements BorrowedBookRepository {
     public BorrowedBook insertBorrowedBook(BorrowedBook borrowedBook) {
         try {
             incrementBorrowedBookIdSeq();
-            borrowedBook.setNumber(retrieveBorrowedBookIdSeq());
+            borrowedBook.setBorrowedBookId(retrieveBorrowedBookIdSeq());
             insertBorrowedBookRow(borrowedBook);
         } catch (SQLException SQLex) {
             SQLex.printStackTrace();
@@ -50,10 +52,10 @@ public class BorrowedBookTable implements BorrowedBookRepository {
                         "INTO LIBRARY.BORROWED_BOOK " +
                         "(borrowed_book_id, book_id, member_id, active, out_date) " +
                         "values (?,?,?,?,?);");
-        preparedStatement.setInt(1, borrowedBook.getNumber());
-        preparedStatement.setInt(2, borrowedBook.getBookNumber());
-        preparedStatement.setInt(3, borrowedBook.getMemberNumber());
-        if (borrowedBook.isActive()) {
+        preparedStatement.setInt(1, borrowedBook.getBorrowedBookId());
+        preparedStatement.setInt(2, borrowedBook.getBookId());
+        preparedStatement.setInt(3, borrowedBook.getMemberId());
+        if (borrowedBook.isActiveIndicator()) {
             preparedStatement.setByte(4, (byte) 1);
         } else {
             preparedStatement.setByte(4, (byte) 0);
@@ -79,7 +81,7 @@ public class BorrowedBookTable implements BorrowedBookRepository {
     }
 
     public BorrowedBook returnBorrowedBook(BorrowedBook borrowedBook) {
-        borrowedBook.setActive(false);
+        borrowedBook.setActiveIndicator(false);
         borrowedBook.setInDate(new Date());
         try {
             updateBorrowedBookRow(borrowedBook);
@@ -96,13 +98,13 @@ public class BorrowedBookTable implements BorrowedBookRepository {
                         "set active = ?" +
                         "  , in_date = ? " +
                         "where borrowed_book_id = ? ;");
-        if (borrowedBook.isActive()) {
+        if (borrowedBook.isActiveIndicator()) {
             preparedStatement.setByte(1, (byte) 1);
         } else {
             preparedStatement.setByte(1, (byte) 0);
         }
         preparedStatement.setDate(2,new java.sql.Date(borrowedBook.getInDate().getTime()));
-        preparedStatement.setInt(3, borrowedBook.getNumber());
+        preparedStatement.setInt(3, borrowedBook.getBorrowedBookId());
         preparedStatement.execute();
     }
 

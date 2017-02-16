@@ -1,16 +1,23 @@
 package application;
 
 public enum BookSubject {
-    TRANSPORT,
-    HISTORY,
-    SCIENCE,
-    NEWS,
-    SPORT;
+    UNKNOWN("UKN"),
+    TRANSPORT("TRN"),
+    HISTORY("HST"),
+    SCIENCE("SCI"),
+    NEWS("NEW"),
+    SPORT("SPT");
 
-    public static int getCode(BookSubject bookSubject){
+    private String bookSubjectCode;
+
+    BookSubject(String bookSubjectCode) {
+        this.bookSubjectCode = bookSubjectCode;
+    }
+
+    public static BookSubject lookup(String bookSubjectCode){
         for (BookSubject element : BookSubject.values()){
-            if (bookSubject == element) return element.ordinal();
+            if (bookSubjectCode.equals(element.bookSubjectCode)) return element;
         }
-        return 0;
+        return BookSubject.UNKNOWN;
     }
 }

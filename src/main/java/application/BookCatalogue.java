@@ -1,13 +1,15 @@
 package application;
 
+import application.model.Book;
+
 import java.util.HashMap;
 
 public class BookCatalogue {
     private HashMap<Integer, Book> books = new HashMap<Integer, Book>();
 
     public Book insertBook(Book book) {
-        book.setNumber(findNextNumber());
-        books.put(book.getNumber(), book);
+        book.setBook_id(findNextNumber());
+        books.put(book.getBook_id(), book);
         return book;
     }
 

@@ -1,5 +1,7 @@
 import application.*;
 import application.model.Address;
+import application.model.Book;
+import application.model.BorrowedBook;
 import application.model.Member;
 import com.neovisionaries.i18n.CountryCode;
 import org.junit.Rule;
@@ -37,9 +39,9 @@ public class MockTest {
         // given
         int number =1;
         BorrowedBook b = new BorrowedBook(book1, member);
-        b.setNumber(number);
+        b.setBorrowedBookId(number);
         b.setInDate(new Date());
-        b.setActive(false);
+        b.setActiveIndicator(false);
 
         // when
         when(borrowedBookRepository.returnBorrowedBook(b)).thenReturn(b);

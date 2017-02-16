@@ -1,5 +1,7 @@
 package application;
 
+import application.model.BorrowedBook;
+
 public interface BorrowedBookRepository {
     public BorrowedBook insertBorrowedBook(BorrowedBook borrowedBook);
     public void listBorrowedBooks();

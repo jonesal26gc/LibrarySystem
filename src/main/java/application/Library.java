@@ -1,6 +1,8 @@
 package application;
 
 import application.model.Address;
+import application.model.Book;
+import application.model.BorrowedBook;
 import application.model.Member;
 
 public class Library {

@@ -1,13 +1,20 @@
 package application;
 
 public enum BookCategory {
-    FICTION,
-    NON_FICTION;
+    UNKNOWN("UKN"),
+    FICTION("F"),
+    NON_FICTION("NF");
 
-    public static int getCode(BookCategory bookCategory){
+    private String bookCategoryCode;
+
+    BookCategory(String bookCategoryCode) {
+        this.bookCategoryCode = bookCategoryCode;
+    }
+
+    public BookCategory lookup(String bookCategoryCode){
         for (BookCategory element : BookCategory.values()){
-            if (bookCategory == element) return element.ordinal();
+            if (bookCategoryCode.equals(element.bookCategoryCode)) return element;
         }
-        return 0;
+        return BookCategory.UNKNOWN;
     }
 }

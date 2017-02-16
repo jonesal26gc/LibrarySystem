@@ -1,5 +1,7 @@
 import application.*;
 import application.model.Address;
+import application.model.Book;
+import application.model.BorrowedBook;
 import application.model.Member;
 import com.neovisionaries.i18n.CountryCode;
 import org.junit.Before;
@@ -54,7 +56,7 @@ public class LibraryShould {
         library.insertBookIntoCatalogue(book1);
 
         // when
-        int reference = library.borrowBook(book1, member).getNumber();
+        int reference = library.borrowBook(book1, member).getBorrowedBookId();
 
         // then
         assertThat(library.obtainBorrowedBookCount(), is(1));
