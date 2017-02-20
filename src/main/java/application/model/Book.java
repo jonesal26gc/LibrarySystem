@@ -53,6 +53,9 @@ public class Book {
     @NotNull
     private String bookSubjectCode;
 
+    public Book() {
+    }
+
     public Book(int book_id, String title, String author,
                 String publicationVersion, Date publicationDate,
                 double costPrice, String bookCategoryCode,
