@@ -17,4 +17,8 @@ public enum Gender {
         }
         return Gender.OTHER;
     }
+
+    public String getGenderCode() {
+        return genderCode;
+    }
 }

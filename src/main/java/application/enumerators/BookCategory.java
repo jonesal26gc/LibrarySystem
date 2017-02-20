@@ -11,6 +11,10 @@ public enum BookCategory {
         this.bookCategoryCode = bookCategoryCode;
     }
 
+    public String getBookCategoryCode() {
+        return bookCategoryCode;
+    }
+
     public BookCategory lookup(String bookCategoryCode){
         for (BookCategory element : BookCategory.values()){
             if (bookCategoryCode.equals(element.bookCategoryCode)) return element;

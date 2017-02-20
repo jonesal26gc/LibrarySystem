@@ -36,10 +36,10 @@ public class BorrowedBookDatabaseShould {
 
         BorrowedBookTable borrowedBookDatabaseTable = new BorrowedBookTable(ldbc);
 
-        Member member = new Member(0,"Jones", "Tony", null, new Date(), Gender.MALE.getGenderCode());
-        Book book1 = new Book("London Buses", "Fred Bloggs", "v1.1", new Date(), 1.99, BookCategory.NON_FICTION, BookSubject.TRANSPORT);
+        Member member = new Member(0,"Jones", "Tony", null, new Date(), Gender.MALE.name());
+        Book book1 = new Book(0,"London Buses", "Fred Bloggs", "v1.1", new Date(), 1.99, BookCategory.NON_FICTION.name(), BookSubject.TRANSPORT.name());
 
-        BorrowedBook bb = new BorrowedBook(book1,member);
+        BorrowedBook bb = new BorrowedBook(0,book1,member,new Date());
         borrowedBookDatabaseTable.insertBorrowedBook(bb);
         System.out.println(bb.toString());
 
@@ -60,10 +60,10 @@ public class BorrowedBookDatabaseShould {
 
         BorrowedBookTable borrowedBookDatabaseTable = new BorrowedBookTable(ldbc);
 
-        Member member = new Member(0,"Jones", "Tony", null, new Date(), Gender.MALE.getGenderCode());
-        Book book1 = new Book("London Buses", "Fred Bloggs", "v1.1", new Date(), 1.99, BookCategory.NON_FICTION, BookSubject.TRANSPORT);
+        Member member = new Member(0,"Jones", "Tony", null, new Date(), Gender.MALE.name());
+        Book book1 = new Book(0,"London Buses", "Fred Bloggs", "v1.1", new Date(), 1.99, BookCategory.NON_FICTION.name(), BookSubject.TRANSPORT.name());
 
-        BorrowedBook bb = new BorrowedBook(book1,member);
+        BorrowedBook bb = new BorrowedBook(0,book1,member, new Date());
         bb.setBorrowedBookId(12);
         borrowedBookDatabaseTable.returnBorrowedBook(bb);
         System.out.println(bb.toString());

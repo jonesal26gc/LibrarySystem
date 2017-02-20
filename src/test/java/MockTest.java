@@ -36,15 +36,14 @@ public class MockTest {
 
         Address homeAddress = new Address(0, "26 Grange Close", "Hitchin", "Herfordshire", "SG4 9HD", CountryCode.GB.getAlpha3());
 
-        Member member = new Member(0,"Jones", "Tony", homeAddress, new Date(), Gender.MALE.getGenderCode());
-        Book book1 = new Book("London Buses", "Fred Bloggs", "v1.1", new Date(), 1.99, BookCategory.NON_FICTION, BookSubject.TRANSPORT);
+        Member member = new Member(0,"Jones", "Tony", homeAddress, new Date(), Gender.MALE.name());
+        Book book1 = new Book(0,"London Buses", "Fred Bloggs", "v1.1", new Date(), 1.99, BookCategory.NON_FICTION.name(), BookSubject.TRANSPORT.name());
 
         // given
         int number =1;
-        BorrowedBook b = new BorrowedBook(book1, member);
+        BorrowedBook b = new BorrowedBook(0,book1, member, new Date());
         b.setBorrowedBookId(number);
         b.setInDate(new Date());
-        b.setActiveIndicator(false);
 
         // when
         when(borrowedBookRepository.returnBorrowedBook(b)).thenReturn(b);

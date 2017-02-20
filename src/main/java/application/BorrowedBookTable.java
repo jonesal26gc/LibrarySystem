@@ -50,17 +50,12 @@ public class BorrowedBookTable implements BorrowedBookRepository {
         PreparedStatement preparedStatement = ldbc.connection.prepareStatement(
                 "INSERT " +
                         "INTO LIBRARY.BORROWED_BOOK " +
-                        "(borrowed_book_id, book_id, member_id, active, out_date) " +
-                        "values (?,?,?,?,?);");
+                        "(borrowed_book_id, book_id, member_id, out_date) " +
+                        "values (?,?,?,?);");
         preparedStatement.setInt(1, borrowedBook.getBorrowedBookId());
-        preparedStatement.setInt(2, borrowedBook.getBookId());
-        preparedStatement.setInt(3, borrowedBook.getMemberId());
-        if (borrowedBook.isActiveIndicator()) {
-            preparedStatement.setByte(4, (byte) 1);
-        } else {
-            preparedStatement.setByte(4, (byte) 0);
-        }
-        preparedStatement.setDate(5,new java.sql.Date(borrowedBook.getOutDate().getTime()));
+        preparedStatement.setInt(2, borrowedBook.getBook().getBook_id());
+        preparedStatement.setInt(3, borrowedBook.getMember().getMember_id());
+        preparedStatement.setDate(4,new java.sql.Date(borrowedBook.getOutDate().getTime()));
         preparedStatement.execute();
     }
 
@@ -81,7 +76,6 @@ public class BorrowedBookTable implements BorrowedBookRepository {
     }
 
     public BorrowedBook returnBorrowedBook(BorrowedBook borrowedBook) {
-        borrowedBook.setActiveIndicator(false);
         borrowedBook.setInDate(new Date());
         try {
             updateBorrowedBookRow(borrowedBook);
@@ -95,16 +89,10 @@ public class BorrowedBookTable implements BorrowedBookRepository {
         PreparedStatement preparedStatement = ldbc.connection.prepareStatement(
                 "UPDATE " +
                         "LIBRARY.BORROWED_BOOK " +
-                        "set active = ?" +
-                        "  , in_date = ? " +
+                        "Set in_date = ? " +
                         "where borrowed_book_id = ? ;");
-        if (borrowedBook.isActiveIndicator()) {
-            preparedStatement.setByte(1, (byte) 1);
-        } else {
-            preparedStatement.setByte(1, (byte) 0);
-        }
-        preparedStatement.setDate(2,new java.sql.Date(borrowedBook.getInDate().getTime()));
-        preparedStatement.setInt(3, borrowedBook.getBorrowedBookId());
+        preparedStatement.setDate(1,new java.sql.Date(borrowedBook.getInDate().getTime()));
+        preparedStatement.setInt(2, borrowedBook.getBorrowedBookId());
         preparedStatement.execute();
     }
 

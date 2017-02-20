@@ -18,14 +18,11 @@ public class BorrowedBookRegister implements BorrowedBookRepository {
 
     public void listBorrowedBooks() {
         for (BorrowedBook borrowedBook : borrowedBooks.values()) {
-            if (borrowedBook.isActiveIndicator()) {
-                System.out.println(borrowedBook.toString());
-            }
+            System.out.println(borrowedBook.toString());
         }
     }
 
     public BorrowedBook returnBorrowedBook(BorrowedBook borrowedBook) {
-        borrowedBook.setActiveIndicator(false);
         borrowedBook.setInDate(new Date());
         borrowedBooks.put(borrowedBook.getBorrowedBookId(), borrowedBook);
         return borrowedBook;
@@ -34,9 +31,7 @@ public class BorrowedBookRegister implements BorrowedBookRepository {
     public int countBooks() {
         int count = 0;
         for (BorrowedBook borrowedBook : borrowedBooks.values()) {
-            if (borrowedBook.isActiveIndicator()) {
-                count++;
-            }
+            count++;
         }
         return count;
     }
