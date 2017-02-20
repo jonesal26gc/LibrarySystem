@@ -3,6 +3,7 @@ package application.model;
 import com.sun.istack.internal.NotNull;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Date;
 
 @Entity
@@ -25,7 +26,7 @@ public class Book {
     @Column(name = "BOOK_ID")
     private int book_id;
 
-    @Column(name = "TITLE")
+    @Column(name = "BOOK_TITLE")
     @NotNull
     private String title;
 
@@ -45,29 +46,36 @@ public class Book {
     @NotNull
     private double costPrice;
 
-    @Column(name = "BOOK_CATEGORY_CODE")
+    @Column(name = "BOOK_CATEGORY_ID")
     @NotNull
-    private String bookCategoryCode;
+    private int bookCategoryId;
 
-    @Column(name = "BOOK_SUBJECT_CODE")
+    @Column(name = "BOOK_SUBJECT_ID")
     @NotNull
-    private String bookSubjectCode;
+    private int bookSubjectId;
+
+    @Column(name="CREATED_TIMESTAMP")
+    @NotNull
+    private Timestamp createdTimestamp;
+
+    @Column(name="MODIFIED_TIMESTAMP")
+    private Timestamp modifiedTimestamp;
 
     public Book() {
     }
 
     public Book(int book_id, String title, String author,
                 String publicationVersion, Date publicationDate,
-                double costPrice, String bookCategoryCode,
-                String bookSubjectCode) {
+                double costPrice, int bookCategoryId,
+                int bookSubjectId) {
         this.book_id = book_id;
         this.title = title;
         this.author = author;
         this.publicationVersion = publicationVersion;
         this.publicationDate = publicationDate;
         this.costPrice = costPrice;
-        this.bookCategoryCode = bookCategoryCode;
-        this.bookSubjectCode = bookSubjectCode;
+        this.bookCategoryId = bookCategoryId;
+        this.bookSubjectId = bookSubjectId;
     }
 
     @Override
@@ -79,8 +87,8 @@ public class Book {
                 ", publicationVersion='" + publicationVersion + '\'' +
                 ", publicationDate=" + publicationDate +
                 ", costPrice=" + costPrice +
-                ", bookCategoryCode='" + bookCategoryCode + '\'' +
-                ", bookSubjectCode='" + bookSubjectCode + '\'' +
+                ", bookCategoryId='" + bookCategoryId + '\'' +
+                ", bookSubjectId='" + bookSubjectId + '\'' +
                 '}';
     }
 
@@ -108,12 +116,12 @@ public class Book {
         return costPrice;
     }
 
-    public String getBookCategoryCode() {
-        return bookCategoryCode;
+    public int getBookCategoryId() {
+        return bookCategoryId;
     }
 
-    public String getBookSubjectCode() {
-        return bookSubjectCode;
+    public int getBookSubjectId() {
+        return bookSubjectId;
     }
 
     public void setBook_id(int book_id) {
@@ -140,11 +148,19 @@ public class Book {
         this.costPrice = costPrice;
     }
 
-    public void setBookCategoryCode(String bookCategoryCode) {
-        this.bookCategoryCode = bookCategoryCode;
+    public void setBookCategoryId(int bookCategoryId) {
+        this.bookCategoryId = bookCategoryId;
     }
 
-    public void setBookSubjectCode(String bookSubjectCode) {
-        this.bookSubjectCode = bookSubjectCode;
+    public void setBookSubjectId(int bookSubjectId) {
+        this.bookSubjectId = bookSubjectId;
+    }
+
+    public void setCreatedTimestamp(Timestamp createdTimestamp) {
+        this.createdTimestamp = createdTimestamp;
+    }
+
+    public void setModifiedTimestamp(Timestamp modifiedTimestamp) {
+        this.modifiedTimestamp = modifiedTimestamp;
     }
 }

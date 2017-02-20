@@ -21,9 +21,9 @@ public class LibraryShould {
     private Address homeAddress = new Address(0, "26 Grange Close", "Hitchin", "Hertfordshire", "SG4 9HD", CountryCode.GB.getAlpha3());
 
     private Member member = new Member(0,"Jones", "Tony", homeAddress, new Date(), Gender.MALE.name());
-    private Book book1 = new Book(0,"London Buses", "Fred Bloggs", "v1.1", new Date(), 1.99, BookCategory.NON_FICTION.name(), BookSubject.TRANSPORT.name());
+    private Book book1 = new Book(0,"London Buses", "Fred Bloggs", "v1.1", new Date(), 1.99, BookCategory.NON_FICTION.getBookCategoryId(), BookSubject.TRANSPORT.getBookSubjectId());
 
-    private Book book2 = new Book(0,"More On Buses", "Simon Trigg", "v1.1", new Date(), 10.99, BookCategory.NON_FICTION.name(), BookSubject.TRANSPORT.name());
+    private Book book2 = new Book(0,"More On Buses", "Simon Trigg", "v1.1", new Date(), 10.99, BookCategory.NON_FICTION.getBookCategoryId(), BookSubject.TRANSPORT.getBookSubjectId());
 
     @Before
     public void stuff_before_tests() {

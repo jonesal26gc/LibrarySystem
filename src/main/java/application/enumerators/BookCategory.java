@@ -1,23 +1,23 @@
 package application.enumerators;
 
 public enum BookCategory {
-    UNKNOWN("UKN"),
-    FICTION("F"),
-    NON_FICTION("NF");
+    UNKNOWN(1),
+    FICTION(2),
+    NON_FICTION(3);
 
-    private String bookCategoryCode;
+    private int bookCategoryId;
 
-    BookCategory(String bookCategoryCode) {
-        this.bookCategoryCode = bookCategoryCode;
+    BookCategory(int bookCategoryId) {
+        this.bookCategoryId = bookCategoryId;
     }
 
-    public String getBookCategoryCode() {
-        return bookCategoryCode;
+    public int getBookCategoryId() {
+        return bookCategoryId;
     }
 
-    public BookCategory lookup(String bookCategoryCode){
+    public BookCategory lookup(int bookCategoryId){
         for (BookCategory element : BookCategory.values()){
-            if (bookCategoryCode.equals(element.bookCategoryCode)) return element;
+            if (bookCategoryId == element.bookCategoryId) return element;
         }
         return BookCategory.UNKNOWN;
     }

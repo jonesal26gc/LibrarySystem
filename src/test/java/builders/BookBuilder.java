@@ -2,6 +2,7 @@ package builders;
 
 import application.model.Book;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public final class BookBuilder {
@@ -16,8 +17,10 @@ public final class BookBuilder {
     private String publicationVersion;
     private Date publicationDate;
     private double costPrice;
-    private String bookCategoryCode;
-    private String bookSubjectCode;
+    private int bookCategoryId;
+    private int bookSubjectId;
+    private Timestamp createdTimestamp;
+    private Timestamp modifiedTimestamp;
 
     private BookBuilder() {
     }
@@ -56,13 +59,23 @@ public final class BookBuilder {
         return this;
     }
 
-    public BookBuilder withBookCategoryCode(String bookCategoryCode) {
-        this.bookCategoryCode = bookCategoryCode;
+    public BookBuilder withBookCategoryId(int bookCategoryId) {
+        this.bookCategoryId = bookCategoryId;
         return this;
     }
 
-    public BookBuilder withBookSubjectCode(String bookSubjectCode) {
-        this.bookSubjectCode = bookSubjectCode;
+    public BookBuilder withBookSubjectId(int bookSubjectId) {
+        this.bookSubjectId = bookSubjectId;
+        return this;
+    }
+
+    public BookBuilder withCreatedTimestamp(Timestamp createdTimestamp) {
+        this.createdTimestamp = createdTimestamp;
+        return this;
+    }
+
+    public BookBuilder withModifiedTimestamp(Timestamp modifiedTimestamp) {
+        this.modifiedTimestamp = modifiedTimestamp;
         return this;
     }
 
@@ -74,8 +87,10 @@ public final class BookBuilder {
         book.setPublicationVersion(publicationVersion);
         book.setPublicationDate(publicationDate);
         book.setCostPrice(costPrice);
-        book.setBookCategoryCode(bookCategoryCode);
-        book.setBookSubjectCode(bookSubjectCode);
+        book.setBookCategoryId(bookCategoryId);
+        book.setBookSubjectId(bookSubjectId);
+        book.setCreatedTimestamp(createdTimestamp);
+        book.setModifiedTimestamp(modifiedTimestamp);
         return book;
     }
 }

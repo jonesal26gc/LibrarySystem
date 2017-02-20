@@ -37,7 +37,7 @@ public class MockTest {
         Address homeAddress = new Address(0, "26 Grange Close", "Hitchin", "Herfordshire", "SG4 9HD", CountryCode.GB.getAlpha3());
 
         Member member = new Member(0,"Jones", "Tony", homeAddress, new Date(), Gender.MALE.name());
-        Book book1 = new Book(0,"London Buses", "Fred Bloggs", "v1.1", new Date(), 1.99, BookCategory.NON_FICTION.name(), BookSubject.TRANSPORT.name());
+        Book book1 = new Book(0,"London Buses", "Fred Bloggs", "v1.1", new Date(), 1.99, BookCategory.NON_FICTION.getBookCategoryId(), BookSubject.TRANSPORT.getBookSubjectId());
 
         // given
         int number =1;

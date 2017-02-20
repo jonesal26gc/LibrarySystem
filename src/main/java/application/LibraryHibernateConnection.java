@@ -1,6 +1,7 @@
 package application;
 
 import application.model.Address;
+import application.model.Book;
 import application.model.Member;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -17,6 +18,7 @@ public class LibraryHibernateConnection {
                 .configure()
                 .addAnnotatedClass(Address.class)
                 .addAnnotatedClass(Member.class)
+                .addAnnotatedClass(Book.class)
                 .buildSessionFactory();
 
         session = sessionFactory.openSession();

@@ -1,26 +1,26 @@
 package application.enumerators;
 
 public enum BookSubject {
-    UNKNOWN("UKN"),
-    TRANSPORT("TRN"),
-    HISTORY("HST"),
-    SCIENCE("SCI"),
-    NEWS("NEW"),
-    SPORT("SPT");
+    UNKNOWN(1),
+    TRANSPORT(2),
+    HISTORY(3),
+    SCIENCE(4),
+    NEWS(5),
+    SPORT(6);
 
-    private String bookSubjectCode;
+    private int bookSubjectId;
 
-    BookSubject(String bookSubjectCode) {
-        this.bookSubjectCode = bookSubjectCode;
+    BookSubject(int bookSubjectId) {
+        this.bookSubjectId = bookSubjectId;
     }
 
-    public String getBookSubjectCode() {
-        return bookSubjectCode;
+    public int getBookSubjectId() {
+        return bookSubjectId;
     }
 
-    public static BookSubject lookup(String bookSubjectCode){
+    public BookSubject lookup(String bookSubjectId){
         for (BookSubject element : BookSubject.values()){
-            if (bookSubjectCode.equals(element.bookSubjectCode)) return element;
+            if (this.bookSubjectId == element.bookSubjectId) return element;
         }
         return BookSubject.UNKNOWN;
     }
