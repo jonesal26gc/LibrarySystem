@@ -9,11 +9,11 @@ import java.util.Date;
 /*************************************************
  * This is the MODEL for HIBERNATE access to the
  * MEMBER table.
- *
+ * <p>
  * It has a foreign key to the ADDRESS table.
  */
 @Entity
-@Table(name="MEMBER")
+@Table(name = "MEMBER")
 public class Member {
 
     // generate the unique from the "hibernate_sequences" table on the database.
@@ -42,7 +42,7 @@ public class Member {
     private String forename;
 
     @OneToOne(cascade = CascadeType.ALL)        // Cascading delete occurs in HIBERNATE when parent is removed.
-    @JoinColumn(name="ADDRESS_ID")              // This is the foreign key to the ADDRESS table.
+    @JoinColumn(name = "ADDRESS_ID")              // This is the foreign key to the ADDRESS table.
     private Address address;
 
     @Column(name = "DATE_OF_BIRTH")
@@ -65,6 +65,21 @@ public class Member {
     @Column(name = "MODIFIED_TIMESTAMP")
     @NotNull
     private Date modifiedDate;
+
+    public Member() {
+    }
+
+    public Member(int member_id, String surname, String forename, Address address, Date dateOfBirth, String genderCode, boolean active, Date createDate, Date modifiedDate) {
+        this.member_id = member_id;
+        this.surname = surname;
+        this.forename = forename;
+        this.address = address;
+        this.dateOfBirth = dateOfBirth;
+        this.genderCode = genderCode;
+        this.active = active;
+        this.createDate = createDate;
+        this.modifiedDate = modifiedDate;
+    }
 
     public Member(int member_id, String surname, String forename, Address address, Date dateOfBirth, String genderCode) {
         this.member_id = member_id;

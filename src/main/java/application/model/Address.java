@@ -60,6 +60,9 @@ public class Address {
     @Column(name="MODIFIED_TIMESTAMP")
     private Timestamp modifiedTimestamp;
 
+    public Address() {
+    }
+
     public Address(int address_id, String streetNameLine1, String town, String city,
                    String postcode, String country) {
         this.address_id = address_id;
