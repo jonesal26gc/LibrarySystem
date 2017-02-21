@@ -8,8 +8,19 @@ import java.util.Date;
 
 @NamedQueries({
         @NamedQuery(name = "cheapBooks",
-                query = "from Book" +
-                        " where cost_price < :costPrice")}
+                query = "from Book " +
+                        "where cost_price < :cost_price " +
+                        "order by cost_price asc " +
+                        ", book_id asc"),
+        @NamedQuery(name = "expensiveBooks",
+
+                // the SELECT refers to the Class variables, whilst everything else is the
+                // database fields.
+                // If you use a SELECT list, then you cannot retrieve into the Class (rather an Object array).
+                query = "select costPrice from Book " +
+                        " where cost_price >= :cost_price " +
+                        " order by cost_price desc " +
+                        ", book_id")}
 )
 
 @NamedNativeQueries({

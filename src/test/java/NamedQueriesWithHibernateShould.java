@@ -16,16 +16,37 @@ public class NamedQueriesWithHibernateShould {
         lhc.open();
         lhc.startTransaction();
 
-        Query namedQuery1 = lhc.session.getNamedQuery("cheapBooks");
-        namedQuery1.setDouble("costPrice",1.00);
-        List<Book> cheapBooksList = namedQuery1.list();
+        Query namedQuery = lhc.session.getNamedQuery("cheapBooks");
+        namedQuery.setDouble("cost_price",1.00);
+        List<Book> cheapBooksList = namedQuery.list();
         for (Book cheapBook : cheapBooksList) {
-            System.out.println(cheapBook.getTitle() + " @ " + cheapBook.getCostPrice());
+            System.out.println(cheapBook.getBook_id() + " is " + cheapBook.getTitle() + " @ " + cheapBook.getCostPrice());
         }
 
         lhc.endTransaction();
         lhc.close();
     }
+
+    @Test
+    public void
+    list_the_expensive_books() {
+
+        LibraryHibernateConnection lhc = new LibraryHibernateConnection();
+        lhc.open();
+        lhc.startTransaction();
+
+        Query namedQuery = lhc.session.getNamedQuery("expensiveBooks");
+        namedQuery.setDouble("cost_price",0.98);
+        List<Double> expensiveBooks = namedQuery.list();
+        for (Double expensiveBook : expensiveBooks) {
+            System.out.println(expensiveBook.toString());
+        }
+
+        lhc.endTransaction();
+        lhc.close();
+    }
+
+
 
     @Test
     public void
