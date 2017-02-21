@@ -6,8 +6,27 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Date;
 
+@NamedQueries({
+        @NamedQuery(name = "cheapBooks",
+                query = "from Book" +
+                        " where cost_price < :costPrice")}
+)
+
+@NamedNativeQueries({
+        @NamedNativeQuery(name = "countBooks",
+                query = "select count(*)" +
+                        " from Book" +
+                        " where cost_price < :costPrice"),
+        @NamedNativeQuery(name = "lastBook",
+                query = "select book_id " +
+                        "  from Book " +
+                        " where book_id = " +
+                        " (select max(book_id) " +
+                        "  from book)")}
+)
+
 @Entity
-@Table(name="BOOK")
+@Table(name = "BOOK")
 public class Book {
     // generate the unique from the "hibernate_sequences" table on the database.
     // The specific key for the sequence row is identified.
@@ -54,11 +73,11 @@ public class Book {
     @NotNull
     private int bookSubjectId;
 
-    @Column(name="CREATED_TIMESTAMP")
+    @Column(name = "CREATED_TIMESTAMP")
     @NotNull
     private Timestamp createdTimestamp;
 
-    @Column(name="MODIFIED_TIMESTAMP")
+    @Column(name = "MODIFIED_TIMESTAMP")
     private Timestamp modifiedTimestamp;
 
     public Book() {

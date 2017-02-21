@@ -1,4 +1,5 @@
 import application.LibraryHibernateConnection;
+import application.model.Book;
 import application.model.Member;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
@@ -65,16 +66,31 @@ public class ListMembersWithHibernate {
         selectWithCriteria.setProjection(
                 Projections.projectionList()
                         .add(Projections.property("surname"))
-                        .add(Projections.property("forename")));
+                        .add(Projections.property("forename"))
+                        .add(Projections.property("address")));
 
         List<Object> selectWithCriteriaOutput = selectWithCriteria.list();
         System.out.println("with criteria");
-        for (Object o : selectWithCriteriaOutput) {
+        for (Object row : selectWithCriteriaOutput) {
             //System.out.println(o.getClass());
-            Object[] r = (Object[]) o;
-            System.out.println(r.length);
-            System.out.println(r[0].toString() + "," + r[1].toString());
+            Object[] column = (Object[]) row;
+            //System.out.println(column.length);
+            System.out.println(column[0].toString() + "," + column[1].toString());
+            System.out.println(column[2].toString());
         }
+
+        Query namedQuery1 = lhc.session.getNamedQuery("cheapBooks");
+        List<Book> cheapBooksList = namedQuery1.list();
+        for (Book cheapBook : cheapBooksList) {
+            System.out.println(cheapBook.getTitle() + " @ " + cheapBook.getCostPrice());
+        }
+
+
+
+
+
+
+
 
         lhc.endTransaction();
         lhc.close();
