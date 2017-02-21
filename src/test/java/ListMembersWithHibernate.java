@@ -3,7 +3,6 @@ import application.model.Member;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Projection;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.junit.Test;
@@ -60,18 +59,21 @@ public class ListMembersWithHibernate {
         Criteria selectWithCriteria = lhc.session.createCriteria(Member.class);
         selectWithCriteria.addOrder(Order.asc("surname"));
         selectWithCriteria.addOrder(Order.asc("forename"));
-        selectWithCriteria.add(Restrictions.between("member_id",10,15));
+        selectWithCriteria.add(Restrictions.between("member_id", 10, 15));
 
         // Include only specific fields.
         selectWithCriteria.setProjection(
                 Projections.projectionList()
-                        //.add(Projections.property("surname"))
+                        .add(Projections.property("surname"))
                         .add(Projections.property("forename")));
 
-        List<String> selectWithCriteriaOutput=selectWithCriteria.list();
+        List<Object> selectWithCriteriaOutput = selectWithCriteria.list();
         System.out.println("with criteria");
-        for (Object o : selectWithCriteriaOutput){
-            System.out.println(o.toString());
+        for (Object o : selectWithCriteriaOutput) {
+            //System.out.println(o.getClass());
+            Object[] r = (Object[]) o;
+            System.out.println(r.length);
+            System.out.println(r[0].toString() + "," + r[1].toString());
         }
 
         lhc.endTransaction();
